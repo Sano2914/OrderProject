@@ -16,12 +16,7 @@
 
 */
 import Index from "views/Index.js";
-import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
-import Register from "views/examples/Register.js";
-import Login from "views/examples/Login.js";
-import Tables from "views/examples/Tables.js";
-import Icons from "views/examples/Icons.js";
+
 import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
 
 var routes = [
@@ -33,46 +28,33 @@ var routes = [
     icon: <Printer/>
   },
   {
-    path: "/icons",
+    path: "/scan",
     name: "Scan",
-    component: Icons,
+    // component: Icons,
     layout: "/admin",
     icon: <Scan  variant="Outline"/>
   },
   {
-    path: "/maps",
+    path: "/electronic",
     name: "Electronic S and S",
-    component: Maps,
+    // component: Maps,
     layout: "/admin",
     icon: <SmsTracking variant="Outline"/>
   },
   {
-    path: "/user-profile",
+    path: "/usb",
     name: "USB / CD",
-    component: Profile,
+    // component: Profile,
     layout: "/admin",
     icon: <Cd variant="Outline"/>
   },
   {
-    path: "/tables",
+    path: "/chicago",
     name: "Chicago - Tree Towns",
-    component: Tables,
+    // component: Tables,
     layout: "/admin",
     icon: <Tree color="#000000" variant="Outline"/>
   },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   icon: "ni ni-key-25 text-info",
-  //   component: Login,
-  //   layout: "/auth"
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   icon: "ni ni-circle-08 text-pink",
-  //   component: Register,
-  //   layout: "/auth"
-  // }
+  
 ];
 export default routes;
