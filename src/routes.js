@@ -53,7 +53,7 @@ var routes = [
     name: "Chicago - Tree Towns",
     // component: Tables,
     layout: "/admin",
-    icon: <Tree color="#000000" variant="Outline"/>
+    icon: <Tree  variant="Outline"/>
   },
   
 ];

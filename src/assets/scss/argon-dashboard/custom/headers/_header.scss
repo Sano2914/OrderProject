@@ -38,7 +38,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-family: 'Manrope', sans-serif;
 }
 .font14{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #000000;
     font-family: 'Manrope', sans-serif;
@@ -75,7 +75,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 330px;
+    // height: 100%;
     padding: 30px;
     border-radius: 8px;
     border: 1px dashed #ffffff !important;
@@ -169,7 +169,7 @@ gap: 20px;
     align-items: center;
   }
   :where(.css-dev-only-do-not-override-10ed4xt).ant-input-affix-wrapper >input.ant-input {
-    color:#7E7E7E
+    color:black;
   }
   body1 {
     color: white;
@@ -187,3 +187,24 @@ line-height: 19px;
 
 color: #7E7E7E;
   }
+  .ant-picker{
+    height: 40px;
+    width: 100%;
+    color: black !important;
+  }
+  :where(.css-dev-only-do-not-override-10ed4xt).ant-picker .ant-picker-input >input:placeholder-shown {
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: black !important;
+    font-weight: 400;
+    font-family: Manrope, sans-serif;
+}
+
+.btn-secondary{
+  background: #FFFFFF !important;
+    border: 1px solid #EDEDED !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+}

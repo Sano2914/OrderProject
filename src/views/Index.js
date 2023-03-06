@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload } from 'antd';
 // react plugin used to create charts
 import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
@@ -73,7 +73,7 @@ const Index = (props) => {
       <Container fluid className="pl-4 ml-3">
         <Row>
           <Col xl="8">
-            <Card className="bg-white ">
+            <Card className="bg-white " >
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
@@ -93,8 +93,15 @@ const Index = (props) => {
 
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
-                    <Checkbox className=""></Checkbox> <span className='font14  pl-2'>Sign and Seal Required</span>
-                  </Col>
+                    
+                  <Row>
+                      <Col lg="2" className="pr-0">
+                        <Checkbox className=""></Checkbox>
+                      </Col>
+                      <Col lg="10" className="pl-0 pt-1">
+                        <span className='font14  pl-2'>Sign and Seal Required</span>
+                      </Col>
+                    </Row>                    </Col>
                   <Col lg="7" className=' header-3 font12'>
                     Select this option if you need PDF / Word document printed with the option of requesting a sign and seal of the documents printed
                     </Col>
@@ -111,22 +118,21 @@ const Index = (props) => {
                     </div>
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                    <button className="choose mt-2 ">Choose File</button>
+                    {/* <button className="choose mt-2 ">Choose File</button> */}
+                    <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
                   </label>
-                  <label for="images" class="drop-containers p-4">
+                  <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <Button type="submit" className=" button-request">
+                <button type="submit" className=" button-request">
                   Submit Request
-                </Button>
-                <div style={{color: 'white', lineHeight: '1.2'}}> Test
-                </div>
+                </button>
               </CardBody>
             </Card>
           </Col>
           <Col xl="4">
-            <Card className="">
+            <Card className="" style ={{height:'100%'}}>
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
@@ -142,8 +148,8 @@ const Index = (props) => {
                   <label className="labels">Project Number</label>
                   <Select
                   placeholder = "Type to Search..."
-                  options = {""}
-                  />
+                 
+                  > <option value ="A">A</option></Select>
                   
                 {/* <select
                   className="inputs"
@@ -152,18 +158,36 @@ const Index = (props) => {
                 </select> */}
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
-                  <div className="pb-3"><Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /></div>
-                  <div><Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /></div>
+                  <div className="pb-3">
+                    {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
+                    <DatePicker 
+                    name={""} 
+                    className = "inputs"
+                    suffixIcon = {<CalendarCircle style={{color:"black"}}    />} 
+                    placeholder = "Select..."
+                    hideTime 
+                    format="MM/DD/YYYY" />
+                    </div>
+                  <div>
+                    {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
+                    <TimePicker
+                    name={""} 
+                    suffixIcon = {<Clock style={{color:"black"}} />} 
+                    placeholder = "00 : 00 PM"
+                    hideSeconds
+                    format = "HH:mm A"
+                    showTime={{ format: 'HH:mm A', use12Hours:true }}
+                    />
+                    </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
                   placeholder = "Type to Search..."
-                  options = {""}
-                  />
+                  > <option value ="A">A</option></Select>
                  
 
 
                 </form>
-                <label for="images" class="drop-containers p-5 mt-6 m-5" ></label>
+                <label for="images" class="drop-containers p-4" ></label>
               </CardBody>
             </Card>
           </Col>
