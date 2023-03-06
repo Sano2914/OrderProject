@@ -23,12 +23,12 @@ const AdminNavbar = (props) => {
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         <Container fluid>
-          <Link
+          <Nav
             className="h4 mb-0 p-2 pt-3 pl-4 head d-none d-lg-inline-block"
-            to="/"
+            
           >
             Request Type - <span style={{color:'#000000'}}>Print </span>
-          </Link>
+          </Nav>
           
           
         </Container>

@@ -104,6 +104,7 @@ font-weight: 500;
 gap: 20px;
   }
   .button-request{
+    border: none;
     background-color: #264B5D;
     border-radius:8px;
     display:inline-block;   
@@ -207,4 +208,11 @@ color: #7E7E7E;
     box-shadow: none !important;
     font-weight: 500 !important;
     font-size: 12px !important;
+}
+.css-6q0nyr-Svg {
+color:black;
+}
+.css-yk16xz-control{
+  border-radius: 8px !important;
+  min-height: 40px !important;
 }

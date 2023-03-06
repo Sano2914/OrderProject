@@ -53,14 +53,7 @@ const Index = (props) => {
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
-  const aquaticCreatures = [
-    { label: 'Shark', value: 'Shark' },
-    { label: 'Dolphin', value: 'Dolphin' },
-    { label: 'Whale', value: 'Whale' },
-    { label: 'Octopus', value: 'Octopus' },
-    { label: 'Crab', value: 'Crab' },
-    { label: 'Lobster', value: 'Lobster' },
-  ];
+  
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -77,7 +70,7 @@ const Index = (props) => {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
-                    <h6 className=" header-white ls-1 mb-1">
+                    <h6 className=" header-white ls-1 mb-1" style={{color:"#7E7E7E"}}>
                       Request Type
                     </h6>
                   </div>
