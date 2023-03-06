@@ -1,9 +1,9 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select } from 'antd';
 // react plugin used to create charts
-import Select from "react-select";
+// import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
@@ -140,9 +140,14 @@ const Index = (props) => {
 
                   <label className="labels">Project Number</label>
                   <Select
-                  placeholder = "Type to Search..."
+                  showSearch
+                  size= {"large"}
+                  style={{  width: '100%'}}
+                  
+                  
+                    placeholder = "Type to Search..."
                  
-                  > <option value ="A">A</option></Select>
+                  > </Select>
                   
                 {/* <select
                   className="inputs"
@@ -174,8 +179,12 @@ const Index = (props) => {
                     </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
-                  placeholder = "Type to Search..."
-                  > <option value ="A">A</option></Select>
+                  size= {"large"}
+                  style={{ width: '100%' }}
+                                    showSearch
+                    placeholder = "Type to Search..."
+                 
+                  > </Select>
                  
 
 

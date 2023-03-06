@@ -212,7 +212,23 @@ color: #7E7E7E;
 .css-6q0nyr-Svg {
 color:black;
 }
-.css-yk16xz-control{
-  border-radius: 8px !important;
-  min-height: 40px !important;
+// .ant-select-single {
+//   /* font-size: 14px; */
+//   /* width: 100%; */
+//   position: relative;
+//   display: inline-flex;
+//   align-items: center;
+//   width: 100%;
+//   font-weight: 400;
+//   font-family: Manrope, sans-serif;
+// }
+
+.ant-select-selection-placeholder {
+  color: #7E7E7E;
+  font-size: 14px;
+}
+.ant-select-arrow {
+  color: black !important;
+  font-weight: bold;
+
 }
