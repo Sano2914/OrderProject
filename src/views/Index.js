@@ -63,7 +63,7 @@ const Index = (props) => {
                 </Row>
               </CardHeader>
               <CardBody>
-                <div className="">
+                <div className="" >
                   <h6 className=" text-black font12 text-left ls-1 mb-1">
                     Sign & Seal
                   </h6>
@@ -89,7 +89,7 @@ const Index = (props) => {
                     </div>
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                    <button className="choose mt-2 ">choose file</button>
+                    <button className="choose mt-2 ">Choose File</button>
                   </label>
                   <label for="images" class="drop-containers p-4">
 
@@ -98,6 +98,8 @@ const Index = (props) => {
                 <Button type="submit" className=" button-request">
                   Submit Request
                 </Button>
+                <div style={{color: 'white', lineHeight: '1.2'}}> Test
+                </div>
               </CardBody>
             </Card>
           </Col>
@@ -118,20 +120,18 @@ const Index = (props) => {
                   <label className="labels">Project Number</label>
                   <select
                     className="inputs"
-                    placeholder="Type to Search">
-
+                    placeholder="Type to Search...">
+<option value="">Type to Search...</option>
                   </select>
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
-                  <div className="pb-3"><Input suffix={<CalendarCircle />} className="inputs" defaultValue="select.." placeholder="Select" type="date" /></div>
-                  <div><Input suffix={<Clock />} className="inputs" defaultValue="select.." type="time" /></div>
+                  <div className="pb-3"><Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /></div>
+                  <div><Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /></div>
                   <label className="labels pt-3">Order For</label>
                   <select style={{}}
                     className="inputs"
                     placeholder="Type to Search">
-                    <option value="">US</option>
-                    <option value="">CANADA</option>
-                    <option value="">EUROPE</option>
+                    <option value="">Type to Search...</option>
 
                   </select>
 

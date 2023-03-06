@@ -21,10 +21,10 @@ import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
 
 var routes = [
   {
-    path: "/index",
+    path: "",
     name: "Print",
     component: Index,
-    layout: "/admin",
+    layout: "/",
     icon: <Printer/>
   },
   {

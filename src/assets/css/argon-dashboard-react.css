@@ -4944,6 +4944,7 @@ input[type="button"].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.5rem;
+
 }
 
 .card-title {
@@ -16585,7 +16586,7 @@ a.btn-icon-only {
 
 .footer {
   background: #f7fafc;
-  padding: 2.5rem 0;
+  padding: .5rem 0;
 }
 .footer .col-footer .heading {
   color: #8898aa;
