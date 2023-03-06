@@ -118,24 +118,24 @@ gap: 20px;
  
   .ant-checkbox .ant-checkbox-inner {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px; 
+    width: 24px;
+    height: 24px; 
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
   }
   .ant-checkbox-checked.ant-checkbox-inner {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
   }
   .ant-checkbox .ant-checkbox-inner:hover {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
@@ -174,4 +174,16 @@ gap: 20px;
   body1 {
     color: white;
     line-height: 1.2;
+  }
+  .css-1okebmr-indicatorSeparator{
+    background-color: white !important;
+  }
+  .css-1wa3eu0-placeholder {
+    font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+
+color: #7E7E7E;
   }

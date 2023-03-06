@@ -176,7 +176,7 @@ const Sidebar = (props) => {
           </UncontrolledDropdown>
         </Nav> */}
         {/* Collapse */}
-        <Collapse navbar isOpen={collapseOpen}>
+        <Collapse navbar isOpen={collapseOpen} className = "pl-3 pr-3 pt-0">
           {/* Collapse header */}
           <div className="navbar-collapse-header d-md-none">
             <Row>

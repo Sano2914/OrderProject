@@ -3,6 +3,7 @@ import { useState } from "react";
 import Chart from "chart.js";
 import { Spin, Checkbox, Input } from 'antd';
 // react plugin used to create charts
+import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
@@ -34,11 +35,32 @@ import Header from "components/Headers/Header.js";
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
+  const Option = Select.Option;
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+  
+  function handleBlur() {
+    console.log('blur');
+  }
+  
+  function handleFocus() {
+    console.log('focus');
+  }
+
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
-
+  const aquaticCreatures = [
+    { label: 'Shark', value: 'Shark' },
+    { label: 'Dolphin', value: 'Dolphin' },
+    { label: 'Whale', value: 'Whale' },
+    { label: 'Octopus', value: 'Octopus' },
+    { label: 'Crab', value: 'Crab' },
+    { label: 'Lobster', value: 'Lobster' },
+  ];
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -69,7 +91,7 @@ const Index = (props) => {
                   </h6>
                 </div>
 
-                <Row className="align-items-center">
+                <Row className="align-items-center pt-3">
                   <Col lg="5">
                     <Checkbox className=""></Checkbox> <span className='font14  pl-2'>Sign and Seal Required</span>
                   </Col>
@@ -118,22 +140,26 @@ const Index = (props) => {
                 <form className="p-2">
 
                   <label className="labels">Project Number</label>
-                  <select
-                    className="inputs"
-                    placeholder="Type to Search...">
-<option value="">Type to Search...</option>
-                  </select>
+                  <Select
+                  placeholder = "Type to Search..."
+                  options = {""}
+                  />
+                  
+                {/* <select
+                  className="inputs"
+                  placeholder="Type to Search...">
+                    <option value =""></option>
+                </select> */}
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3"><Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /></div>
                   <div><Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /></div>
                   <label className="labels pt-3">Order For</label>
-                  <select style={{}}
-                    className="inputs"
-                    placeholder="Type to Search">
-                    <option value="">Type to Search...</option>
-
-                  </select>
+                  <Select
+                  placeholder = "Type to Search..."
+                  options = {""}
+                  />
+                 
 
 
                 </form>
