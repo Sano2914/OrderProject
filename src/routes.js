@@ -21,10 +21,10 @@ import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
 
 var routes = [
   {
-    path: "/index",
+    path: "",
     name: "Print",
     component: Index,
-    layout: "/admin",
+    layout: "/",
     icon: <Printer/>
   },
   {
@@ -53,7 +53,7 @@ var routes = [
     name: "Chicago - Tree Towns",
     // component: Tables,
     layout: "/admin",
-    icon: <Tree color="#000000" variant="Outline"/>
+    icon: <Tree  variant="Outline"/>
   },
   
 ];

@@ -38,7 +38,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-family: 'Manrope', sans-serif;
 }
 .font14{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #000000;
     font-family: 'Manrope', sans-serif;
@@ -75,7 +75,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 330px;
+    // height: 100%;
     padding: 30px;
     border-radius: 8px;
     border: 1px dashed #ffffff !important;
@@ -104,6 +104,7 @@ font-weight: 500;
 gap: 20px;
   }
   .button-request{
+    border: none;
     background-color: #264B5D;
     border-radius:8px;
     display:inline-block;   
@@ -118,24 +119,24 @@ gap: 20px;
  
   .ant-checkbox .ant-checkbox-inner {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px; 
+    width: 24px;
+    height: 24px; 
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
   }
   .ant-checkbox-checked.ant-checkbox-inner {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
   }
   .ant-checkbox .ant-checkbox-inner:hover {
     background-color: #93CAE6;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 8px;
     border: 1px solid #264B5D;
     accent-color: #264B5D;
@@ -152,6 +153,7 @@ gap: 20px;
   }
   .inputs {
     border: 1px solid #d9d9d9;
+    color:#7E7E7E;
     border-radius: 8px;
     background-color: #ffffff;
     box-sizing: border-box;
@@ -167,4 +169,66 @@ gap: 20px;
     width: 96px;
     align-items: center;
   }
- 
+  :where(.css-dev-only-do-not-override-10ed4xt).ant-input-affix-wrapper >input.ant-input {
+    color:black;
+  }
+  body1 {
+    color: white;
+    line-height: 1.2;
+  }
+  .css-1okebmr-indicatorSeparator{
+    background-color: white !important;
+  }
+  .css-1wa3eu0-placeholder {
+    font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+
+color: #7E7E7E;
+  }
+  .ant-picker{
+    height: 40px;
+    width: 100%;
+    color: black !important;
+  }
+  :where(.css-dev-only-do-not-override-10ed4xt).ant-picker .ant-picker-input >input:placeholder-shown {
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: black !important;
+    font-weight: 400;
+    font-family: Manrope, sans-serif;
+}
+
+.btn-secondary{
+  background: #FFFFFF !important;
+    border: 1px solid #EDEDED !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+}
+.css-6q0nyr-Svg {
+color:black;
+}
+// .ant-select-single {
+//   /* font-size: 14px; */
+//   /* width: 100%; */
+//   position: relative;
+//   display: inline-flex;
+//   align-items: center;
+//   width: 100%;
+//   font-weight: 400;
+//   font-family: Manrope, sans-serif;
+// }
+
+.ant-select-selection-placeholder {
+  color: #7E7E7E;
+  font-size: 14px;
+}
+.ant-select-arrow {
+  color: black !important;
+  font-weight: bold;
+
+}

@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select } from 'antd';
 // react plugin used to create charts
+// import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
@@ -34,11 +35,25 @@ import Header from "components/Headers/Header.js";
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
+  const Option = Select.Option;
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+  
+  function handleBlur() {
+    console.log('blur');
+  }
+  
+  function handleFocus() {
+    console.log('focus');
+  }
+
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
-
+  
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -51,11 +66,11 @@ const Index = (props) => {
       <Container fluid className="pl-4 ml-3">
         <Row>
           <Col xl="8">
-            <Card className="bg-white ">
+            <Card className="bg-white " >
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
-                    <h6 className=" header-white ls-1 mb-1">
+                    <h6 className=" header-white ls-1 mb-1" style={{color:"#7E7E7E"}}>
                       Request Type
                     </h6>
                   </div>
@@ -63,16 +78,23 @@ const Index = (props) => {
                 </Row>
               </CardHeader>
               <CardBody>
-                <div className="">
+                <div className="" >
                   <h6 className=" text-black font12 text-left ls-1 mb-1">
                     Sign & Seal
                   </h6>
                 </div>
 
-                <Row className="align-items-center">
+                <Row className="align-items-center pt-3">
                   <Col lg="5">
-                    <Checkbox className=""></Checkbox> <span className='font14  pl-2'>Sign and Seal Required</span>
-                  </Col>
+                    
+                  <Row>
+                      <Col lg="2" className="pr-0">
+                        <Checkbox className=""></Checkbox>
+                      </Col>
+                      <Col lg="10" className="pl-0 pt-1">
+                        <span className='font14  pl-2'>Sign and Seal Required</span>
+                      </Col>
+                    </Row>                    </Col>
                   <Col lg="7" className=' header-3 font12'>
                     Select this option if you need PDF / Word document printed with the option of requesting a sign and seal of the documents printed
                     </Col>
@@ -89,20 +111,21 @@ const Index = (props) => {
                     </div>
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                    <button className="choose mt-2 ">choose file</button>
+                    {/* <button className="choose mt-2 ">Choose File</button> */}
+                    <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
                   </label>
-                  <label for="images" class="drop-containers p-4">
+                  <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <Button type="submit" className=" button-request">
+                <button type="submit" className=" button-request">
                   Submit Request
-                </Button>
+                </button>
               </CardBody>
             </Card>
           </Col>
           <Col xl="4">
-            <Card className="">
+            <Card className="" style ={{height:'100%'}}>
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
@@ -116,28 +139,57 @@ const Index = (props) => {
                 <form className="p-2">
 
                   <label className="labels">Project Number</label>
-                  <select
-                    className="inputs"
-                    placeholder="Type to Search">
-
-                  </select>
+                  <Select
+                  showSearch
+                  size= {"large"}
+                  style={{  width: '100%'}}
+                  
+                  
+                    placeholder = "Type to Search..."
+                 
+                  > </Select>
+                  
+                {/* <select
+                  className="inputs"
+                  placeholder="Type to Search...">
+                    <option value =""></option>
+                </select> */}
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
-                  <div className="pb-3"><Input suffix={<CalendarCircle />} className="inputs" defaultValue="select.." placeholder="Select" type="date" /></div>
-                  <div><Input suffix={<Clock />} className="inputs" defaultValue="select.." type="time" /></div>
+                  <div className="pb-3">
+                    {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
+                    <DatePicker 
+                    name={""} 
+                    className = "inputs"
+                    suffixIcon = {<CalendarCircle style={{color:"black"}}    />} 
+                    placeholder = "Select..."
+                    hideTime 
+                    format="MM/DD/YYYY" />
+                    </div>
+                  <div>
+                    {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
+                    <TimePicker
+                    name={""} 
+                    suffixIcon = {<Clock style={{color:"black"}} />} 
+                    placeholder = "00 : 00 PM"
+                    hideSeconds
+                    format = "HH:mm A"
+                    showTime={{ format: 'HH:mm A', use12Hours:true }}
+                    />
+                    </div>
                   <label className="labels pt-3">Order For</label>
-                  <select style={{}}
-                    className="inputs"
-                    placeholder="Type to Search">
-                    <option value="">US</option>
-                    <option value="">CANADA</option>
-                    <option value="">EUROPE</option>
-
-                  </select>
+                  <Select
+                  size= {"large"}
+                  style={{ width: '100%' }}
+                                    showSearch
+                    placeholder = "Type to Search..."
+                 
+                  > </Select>
+                 
 
 
                 </form>
-                <label for="images" class="drop-containers p-5 mt-6 m-5" ></label>
+                <label for="images" class="drop-containers p-4" ></label>
               </CardBody>
             </Card>
           </Col>
