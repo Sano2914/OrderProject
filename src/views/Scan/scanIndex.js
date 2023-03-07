@@ -31,8 +31,9 @@ import {
 } from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import TextArea from "antd/es/input/TextArea";
 
-const Index = (props) => {
+const ScanIndex = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
   const Option = Select.Option;
@@ -70,7 +71,7 @@ const Index = (props) => {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
-                    <h6 className=" header-white ls-1 mb-1" style={{color:"#7E7E7E"}}>
+                    <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                       Request Type
                     </h6>
                   </div>
@@ -79,44 +80,56 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 <div className="" >
-                  <h6 className=" text-black font12 text-left ls-1 mb-1">
-                    Sign & Seal
-                  </h6>
+                  <h1 style={{ fontSize: 24, color: '#000000', fontWeight: 500, fontFamily: 'Manrope' }}>
+                    Scan Request
+                  </h1>
+                  <span style={{ fontSize: 12, color: '#7E7E7E' }}>
+                    Select this option if you have physical documents that you need scanned to a digital format.
+                  </span>
                 </div>
-
+                <span style={{ fontSize: 12, color: '#000000' }}>
+                  New your file
+                </span>
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
-
                     <Row>
-                      <Col lg="2" className="pr-0">
-                        <Checkbox className=""></Checkbox>
+                      <Col lg='10'  className=' header-3 font12'>
+                        <Input
+                          type="text"
+                          size={"large"}
+                          style={{ width: '100%' }}
+                          placeholder="FileName.pdf"
+                        />
+                      </Col>
+                      <Col lg='2' className="pr-0">
+                        <Checkbox className="">Color</Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
-                        <span className='font14  pl-2'>Sign and Seal Required</span>
+                        <span className='font14  pl-2'>Where should we put your file?</span>
                       </Col>
-                    </Row>                    </Col>
-                  <Col lg="7" className=' header-3 font12'>
-                    Select this option if you need PDF / Word document printed with the option of requesting a sign and seal of the documents printed
+                    </Row>
                   </Col>
                 </Row>
-                <div className='header-2 ls-1 mt-3'>
-                  Print
-                </div>
+
                 <div className='mt-2'>
-                  <label for="images" class="drop-container p-4">
-                    {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
-                    <div className="note p-4">
+
+                  <TextArea
+                    type="text"
+                    placeholder="Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents"
+                    
+                  // value={this.state.value}
+                  // onChange={this.handleChange}
+                  />
+                  {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
+                  {/* <div className="note p-4">
                       <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
 
-                    </div>
+                    </div> */}
 
-                    <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                    {/* <button className="choose mt-2 ">Choose File</button> */}
-                    <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
-                  </label>
-                  <label for="images" class="drop-containers p-4" >
-
-                  </label>
+                  {/* <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span> */}
+                  {/* <button className="choose mt-2 ">Choose File</button> */}
+                  {/* <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload> */}
+                  <label for="images" class="drop-containers p-4" ></label>
                 </div>
                 <button type="submit" className=" button-request">
                   Submit Request
@@ -137,11 +150,14 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 <form className="p-2">
+
                   <label className="labels">Project Number</label>
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
+
+
                     placeholder="Type to Search..."
 
                   > </Select>
@@ -197,4 +213,4 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+export default ScanIndex;
