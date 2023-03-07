@@ -19,6 +19,9 @@ import Index from "views/Index.js";
 import Electronic from "views/Electronic-s/Electronic"; 
 
 import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
+import ScanIndex from "views/Scan/scanIndex";
+import USBCD from "views/USB/USB-CD";
+import ChicagoTreeTown from "views/Chicago-Tree-Town/CTT";
 
 var routes = [
   {
@@ -29,30 +32,30 @@ var routes = [
     icon: <Printer/>
   },
   {
-    path: "/icons",
+    path: "/scan",
     name: "Scan",
-    // component: Icons,
+    component: ScanIndex,
     layout: "/admin",
     icon: <Scan  variant="Outline"/>
   },
   {
-    path: "/maps",
+    path: "/electronic",
     name: "Electronic S and S",
     component: Electronic,
     layout: "/admin",
     icon: <SmsTracking variant="Outline"/>
   },
   {
-    path: "/user-profile",
+    path: "/usb",
     name: "USB / CD",
-    // component: Profile,
+    component: USBCD,
     layout: "/admin",
     icon: <Cd variant="Outline"/>
   },
   {
-    path: "/tables",
+    path: "/chicago",
     name: "Chicago - Tree Towns",
-    // component: Tables,
+    component: ChicagoTreeTown,
     layout: "/admin",
     icon: <Tree color="#000000" variant="Outline"/>
   },
