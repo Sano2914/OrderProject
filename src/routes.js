@@ -16,7 +16,7 @@
 
 */
 import Index from "views/Index.js";
-import Electronic from "views/Electronic-s/Electronic";
+import Electronic from "views/Electronic-s/Electronic"; 
 
 import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
 

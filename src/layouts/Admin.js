@@ -73,7 +73,7 @@ const Admin = (props) => {
           innerLink: "/admin/index",
           imgSrc: require("../assets/img/brand/argon-react.png"),
           imgAlt: "..."
-        }}
+        }} 
       />
       <div className="main-content" ref={mainContent}>
         <AdminNavbar
