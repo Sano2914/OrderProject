@@ -1,4 +1,20 @@
+/*!
 
+=========================================================
+* Argon Dashboard React - v1.2.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
 import React from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
@@ -22,29 +38,17 @@ const Admin = (props) => {
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/"){
+      if (prop.layout === "/admin") {
         return (
-              <Route
-                path={prop.layout }
-                component={prop.component}
-                key={key}
-              />
-            );
-      }else{
-                return null;
-
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      } else {
+        return null;
       }
-      // if (prop.layout === "/admin") {
-      //   return (
-      //     <Route
-      //       path={prop.layout + prop.path}
-      //       component={prop.component}
-      //       key={key}
-      //     />
-      //   );
-      // } else {
-      //   return null;
-      // }
     });
   };
 
@@ -66,11 +70,10 @@ const Admin = (props) => {
         {...props}
         routes={routes}
         logo={{
-          // innerLink: "/admin/index",
-          innerLink: "/",
+          innerLink: "/admin/index",
           imgSrc: require("../assets/img/brand/argon-react.png"),
           imgAlt: "..."
-        }}
+        }} 
       />
       <div className="main-content" ref={mainContent}>
         <AdminNavbar
@@ -79,7 +82,7 @@ const Admin = (props) => {
         />
         <Switch>
           {getRoutes(routes)}
-          {/* <Redirect from="*" to="/admin/index" /> */}
+          <Redirect from="*" to="/admin/index" />
         </Switch>
         <Container fluid>
           <AdminFooter />
