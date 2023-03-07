@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Modal } from 'antd';
 // react plugin used to create charts
 // import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
@@ -31,12 +31,20 @@ import {
 } from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import AllRequestsModal from "./examples/AllRequestsModal";
 
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
+  const [open, setOpen] = useState(false);
   const Option = Select.Option;
 
+  const handleok = () =>{
+    setOpen(false);
+  }
+  const handleCancel = () => {
+    setOpen(false);
+  }
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
@@ -74,7 +82,6 @@ const Index = (props) => {
                       Request Type
                     </h6>
                   </div>
-
                 </Row>
               </CardHeader>
               <CardBody>
@@ -112,15 +119,40 @@ const Index = (props) => {
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                     {/* <button className="choose mt-2 ">Choose File</button> */}
-                    <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                    <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
                   </label>
                   <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <button type="submit" className=" button-request">
+                <Button type="submit" onClick={() => setOpen(true)}>
                   Submit Request
-                </button>
+                </Button>
+                <Modal 
+                  // title="Print"
+                  centered
+                  open={open}
+                  onOk={handleok}
+                  onCancel={handleCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-3">
+                    <Col className="ml-2" style={{textAlign:'start'}}>
+                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                    </Col>
+                    <Col>
+                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                    </Col>
+                    </Row>,
+                    
+                  ]}
+                 
+                  width={1300}
+                >
+                  
+                  <AllRequestsModal/>
+                  
+                </Modal>
               </CardBody>
             </Card>
           </Col>
@@ -139,10 +171,10 @@ const Index = (props) => {
                 <form className="p-2">
                   <label className="labels">Project Number</label>
                   <Select
-                    showSearch
-                    size={"large"}
-                    style={{ width: '100%' }}
-                    placeholder="Type to Search..."
+                  showSearch
+                  size= {"large"}
+                  style={{  width: '100%'}}
+                  placeholder = "Type to Search..."
 
                   > </Select>
 
@@ -182,9 +214,6 @@ const Index = (props) => {
                     placeholder="Type to Search..."
 
                   > </Select>
-
-
-
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>
               </CardBody>

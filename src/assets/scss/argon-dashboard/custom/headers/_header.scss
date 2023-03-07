@@ -9,9 +9,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type="time"]::-webkit-calendar-picker-indicator {
   background: none;
 }
-.ant-table-tbody > tr > td {
-  padding: 30px;
-}
+
 .header {
     position: relative;
 }
@@ -44,12 +42,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-weight: 400;
     color: #000000;
     font-family: 'Manrope', sans-serif;
-}
-.font16{
-  font-size: 16px;
-  font-weight: 500;
-  color: #000000;
-  font-family: 'Manrope';
 }
 .header-3{
     font-family: 'Manrope', sans-serif;
@@ -112,17 +104,17 @@ font-weight: 500;
 gap: 20px;
   }
   .button-request{
-    border: none;
-    background-color: #264B5D;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
     border-radius:8px;
     display:inline-block;   
     //  line-height: 1.3em;
-    color:#ffffff;
-    font-size:14px;
+    color:#000000;
+    font-size:12px;
     font-weight:500;
     text-decoration:none;
      height: 43px;
-     width: 154px;
+    //  width: 154px;
   }
  
   .ant-checkbox .ant-checkbox-inner {
@@ -159,15 +151,6 @@ gap: 20px;
     margin-top:8px;
     line-height: 17px;
   }
-  .labels-e {
-    color: #000000;
-    display: block;
-    // font-family: sans-serif;
-    font-size: 12px;
-     font-weight: 500;
-    margin-top:8px;
-    line-height: 17px;
-  }
   .inputs {
     border: 1px solid #d9d9d9;
     color:#7E7E7E;
@@ -197,7 +180,7 @@ gap: 20px;
     background-color: white !important;
   }
   .css-1wa3eu0-placeholder {
-    font-family: 'Manrope';
+    font-family: 'Manrope', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -215,30 +198,27 @@ color: #7E7E7E;
     font-size: 14px;
     color: black !important;
     font-weight: 400;
-    font-family: Manrope, sans-serif;
+    font-family: 'Manrope', sans-serif;
 }
 
 .btn-secondary{
-  background: #FFFFFF !important;
-    border: 1px solid #EDEDED !important;
+  background: #264B5D !important;
+    // border: 1px solid #EDEDED !important;
     border-radius: 8px !important;
     box-shadow: none !important;
     font-weight: 500 !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
+    color: #FFFFFF;
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    line-height: 19px;
+}
+.btn-secondary:hover{
+  color: #FFFFFF;
 }
 .css-6q0nyr-Svg {
 color:black;
 }
-// .ant-select-single {
-//   /* font-size: 14px; */
-//   /* width: 100%; */
-//   position: relative;
-//   display: inline-flex;
-//   align-items: center;
-//   width: 100%;
-//   font-weight: 400;
-//   font-family: Manrope, sans-serif;
-// }
 
 .ant-select-selection-placeholder {
   color: #7E7E7E;
@@ -249,7 +229,69 @@ color:black;
   font-weight: bold;
 
 }
-.electronic-s{
+.modalTitle{
+  font-family: 'Manrope', sans-serif; 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px ;
+  line-height: 22px ;
+  color: #000000;
+}
+.ant-modal .ant-modal-content{
+  padding: 0px;
+}
+.gridCard{
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+  text-align: center;
+}
+.gridCardfile{
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  color: #264B5D;
+}
+.ant-select-selection-placeholder {
+  padding-inline-end: 40px !important;
+}
+// :where(.css-dev-only-do-not-override-10ed4xt).ant-card-contain-grid:not(.ant-card-loading) .ant-card-body {
+
+//   margin-inline-start: 0px !important;
+// }
+@media (min-width: 1200px){
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1340px;
+  }
+  }
+.padding{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.ant-table-tbody > tr > td {
+  padding: 30px;
+}
+.font16{
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'Manrope';
+}
+.labels-e {
+  color: #000000;
+  display: block;
+  // font-family: sans-serif;
+  font-size: 12px;
+   font-weight: 500;
+  margin-top:8px;
+  line-height: 17px;
+}
+electronic-s{
   font-family: "Manrope";
 font-size: 24px;
 font-weight: 500;
@@ -283,7 +325,7 @@ color: #7E7E7E;
   border-color: #264B5D;
   accent-color :#93CAE6;
   background-color:#93CAE6 ;
- 
+
 }
 .ant-radio-checked .ant-radio-inner:focus{
   border-color: #264B5D;
