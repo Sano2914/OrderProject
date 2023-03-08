@@ -298,7 +298,6 @@ font-weight: 500;
 letter-spacing:  0em;
 // text-align: left;
 color: #000000;
-
 }
 .electronic-2{
   font-family: "Manrope";
@@ -308,14 +307,7 @@ color: #000000;
   letter-spacing: 0em;
   // text-align: left;
 color: #7E7E7E;
-
 }
-.ant-radio-checked .ant-radio-inner{
-  border-color: #264B5D;
-  accent-color :#93CAE6;
-  background-color:#93CAE6 
-}
-
 .ant-radio-checked .ant-radio-inner:after{
   background-color: #264B5D;
   accent-color :#93CAE6;
@@ -331,4 +323,16 @@ color: #7E7E7E;
   border-color: #264B5D;
   accent-color :#93CAE6;
   background-color:#93CAE6 
+}
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner{
+  border-color: #264B5D;
+  background-color:#93CAE6;
+}
+.putOnFile{
+font-family: 'Manrope', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+color: #7E7E7E;
 }

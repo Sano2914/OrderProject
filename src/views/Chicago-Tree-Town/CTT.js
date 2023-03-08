@@ -136,8 +136,10 @@ const ChicagoTreeTown = (props) => {
                                     {/* </form> */}
                                 </div>
                                 <div className="ml-2 mb-5">
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="mb-[2px]">
+                                    <label 
+                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
+                                    className="labels">Delivery or Pick-Up</label>
                                         <Radio.Group
                                             options={[
                                                 { label: "Delivery", value: "a"},
@@ -145,28 +147,30 @@ const ChicagoTreeTown = (props) => {
                                             ]}
                                         />
                                     </Form>
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="pt-3">
+                                    <label 
+                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
+                                    className="labels">Bind or No-Bind</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Bind", value: "a" },
+                                                { label: "Bind", value: "a"},
                                                 { label: "No-Bind", value: "b" }
                                             ]}
                                         />
                                     </Form>
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="pt-3">
+                                    <label 
+                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
+                                    className="labels">Add 11 x 17 record set?</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Yes", value: "a", },
+                                                { label: "Yes", value: "a"},
                                                 { label: "No", value: "b" }
                                             ]}
                                         />
                                     </Form>
                                 </div>
-                                <button type="submit" className=" button-request">
-                                    Submit Request
-                                </button>
+                                <Button className="mt-5" key="submit">Submit Request</Button>
                             </CardBody>
                         </Card>
                     </Col>
@@ -191,24 +195,8 @@ const ChicagoTreeTown = (props) => {
                                         style={{ width: '100%' }}
                                         placeholder="Type to Search..."
                                     > </Select>
-                                    {/* <div className="radio-btn-container" style={{ display: "flex" }}>
-                                        <RadioButton
-                                            // changed={radioChangeHandler}
-                                            // id="1"
-                                            // isSelected={paymentMethod === "QuickPay"}
-                                            // label="QuickPay"
-                                            // value="QuickPay"
-                                        />
-                                        </div> */}
-                                    {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
-
                                     <label for="start" className="labels pt-3">Date/Time Required</label>
                                     <div className="pb-3">
-                                        {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                                         <DatePicker
                                             name={""}
                                             className="inputs"
@@ -218,7 +206,6 @@ const ChicagoTreeTown = (props) => {
                                             format="MM/DD/YYYY" />
                                     </div>
                                     <div>
-                                        {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                                         <TimePicker
                                             name={""}
                                             suffixIcon={<Clock style={{ color: "black" }} />}

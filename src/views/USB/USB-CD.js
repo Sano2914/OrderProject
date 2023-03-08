@@ -81,14 +81,14 @@ const USBCD = (props) => {
                                 <div className="px-0" >
                                     <h1 style={{ fontSize: 24, color: '#000000', fontWeight: 500, fontFamily: 'Manrope' }}>
                                         USB/CD                                    </h1>
-                                    <span style={{ fontSize: 12, color: '#7E7E7E' }}>
+                                    <div style={{ fontSize: 12, color: '#7E7E7E' }}>
                                         Select this option if you require a CD / DVD made of your digital files.
-                                    </span>
+                                    </div>
                                 </div>
-                                <span style={{ fontSize: 16, color: '#000000', fontWeight: '500px', fontFamily: 'Manrope' }}>
+                                <div className="mt-3" style={{ fontSize: 16, color: '#000000', fontFamily: 'Manrope' }}>
                                     Request a USB / CD
-                                </span>
-                                <div className="px-0"
+                                </div>
+                                <div className="mt-3 mr-1"
                                 style={{display: "flex",flexDirection: 'row'}}>
                                     <div className="col-4">
                                         <label className="labels font12">Select</label>
@@ -137,9 +137,7 @@ const USBCD = (props) => {
                                     <label for="images" class="drop-containers p-4" >
                                     </label>
                                 </div>
-                                <button type="submit" className=" button-request">
-                                    Submit Request
-                                </button>
+                                <Button className="mt-5" key="submit">Submit Request</Button>
                             </CardBody>
                         </Card>
                     </Col>
