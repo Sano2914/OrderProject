@@ -75,7 +75,6 @@ const ScanIndex = (props) => {
                       Request Type
                     </h6>
                   </div>
-
                 </Row>
               </CardHeader>
               <CardBody>
@@ -87,13 +86,12 @@ const ScanIndex = (props) => {
                     Select this option if you have physical documents that you need scanned to a digital format.
                   </span>
                 </div>
-                <span style={{ fontSize: 12, color: '#000000' }}>
-                  New your file
-                </span>
-                <Row className="align-items-center pt-3">
-                  <Col lg="5">
-                    <Row>
-                      <Col lg='10'  className=' header-3 font12'>
+                <div className="mt-3" style={{ fontSize: 12, color: '#000000' }}>
+                  Name your file
+                </div>
+                {/* <Row className="align-items-center pt-3"> */}
+                    <Row className="mt-2">
+                      <Col className=' header-3 font12'>
                         <Input
                           type="text"
                           size={"large"}
@@ -101,26 +99,20 @@ const ScanIndex = (props) => {
                           placeholder="FileName.pdf"
                         />
                       </Col>
-                      <Col lg='2' className="pr-0">
+                      <Col className="pr-0" style={{textAlign:'end'}}>
                         <Checkbox className="">Color</Checkbox>
                       </Col>
-                      <Col lg="10" className="pl-0 pt-1">
-                        <span className='font14  pl-2'>Where should we put your file?</span>
-                      </Col>
                     </Row>
-                  </Col>
-                </Row>
+                    <div className='font14  pl-2 mt-4'>Where should we put your file?</div>
+                {/* </Row> */}
 
                 <div className='mt-2'>
-
-                  <TextArea
-                    type="text"
-                    placeholder="Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents"
-                    
-                  // value={this.state.value}
-                  // onChange={this.handleChange}
-                  />
-                  {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
+                  <Card style={{height:300}}>
+                    <div className="p-3 putOnFile">
+                    Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents
+                    </div>
+                  
+                  </Card>                  {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
                   {/* <div className="note p-4">
                       <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
 
@@ -131,9 +123,7 @@ const ScanIndex = (props) => {
                   {/* <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload> */}
                   <label for="images" class="drop-containers p-4" ></label>
                 </div>
-                <button type="submit" className=" button-request">
-                  Submit Request
-                </button>
+                <Button className="mt-5" key="submit">Submit Request</Button>
               </CardBody>
             </Card>
           </Col>
@@ -161,12 +151,6 @@ const ScanIndex = (props) => {
                     placeholder="Type to Search..."
 
                   > </Select>
-
-                  {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
