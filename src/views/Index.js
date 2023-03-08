@@ -48,11 +48,11 @@ const Index = (props) => {
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
-
+  
   function handleBlur() {
     console.log('blur');
   }
-
+  
   function handleFocus() {
     console.log('focus');
   }
@@ -61,7 +61,7 @@ const Index = (props) => {
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
-
+  
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -93,8 +93,8 @@ const Index = (props) => {
 
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
-
-                    <Row>
+                    
+                  <Row>
                       <Col lg="2" className="pr-0">
                         <Checkbox className=""></Checkbox>
                       </Col>
@@ -104,7 +104,7 @@ const Index = (props) => {
                     </Row>                    </Col>
                   <Col lg="7" className=' header-3 font12'>
                     Select this option if you need PDF / Word document printed with the option of requesting a sign and seal of the documents printed
-                  </Col>
+                    </Col>
                 </Row>
                 <div className='header-2 ls-1 mt-3'>
                   Print
@@ -157,7 +157,7 @@ const Index = (props) => {
             </Card>
           </Col>
           <Col xl="4">
-            <Card className="" style={{ height: '100%' }}>
+            <Card className="" style ={{height:'100%'}}>
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
@@ -169,6 +169,7 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 <form className="p-2">
+
                   <label className="labels">Project Number</label>
                   <Select
                   showSearch
@@ -177,8 +178,8 @@ const Index = (props) => {
                   placeholder = "Type to Search..."
 
                   > </Select>
-
-                  {/* <select
+                  
+                {/* <select
                   className="inputs"
                   placeholder="Type to Search...">
                     <option value =""></option>
@@ -187,32 +188,32 @@ const Index = (props) => {
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
                     {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
-                    <DatePicker
-                      name={""}
-                      className="inputs"
-                      suffixIcon={<CalendarCircle style={{ color: "black" }} />}
-                      placeholder="Select..."
-                      hideTime
-                      format="MM/DD/YYYY" />
-                  </div>
+                    <DatePicker 
+                    name={""} 
+                    className = "inputs"
+                    suffixIcon = {<CalendarCircle style={{color:"black"}}    />} 
+                    placeholder = "Select..."
+                    hideTime 
+                    format="MM/DD/YYYY" />
+                    </div>
                   <div>
                     {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                     <TimePicker
-                      name={""}
-                      suffixIcon={<Clock style={{ color: "black" }} />}
-                      placeholder="00 : 00 PM"
-                      hideSeconds
-                      format="HH:mm A"
-                      showTime={{ format: 'HH:mm A', use12Hours: true }}
+                    name={""} 
+                    suffixIcon = {<Clock style={{color:"black"}} />} 
+                    placeholder = "00 : 00 PM"
+                    hideSeconds
+                    format = "HH:mm A"
+                    showTime={{ format: 'HH:mm A', use12Hours:true }}
                     />
-                  </div>
+                    </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
-                    size={"large"}
-                    style={{ width: '100%' }}
-                    showSearch
-                    placeholder="Type to Search..."
-
+                  size= {"large"}
+                  style={{ width: '100%' }}
+                                    showSearch
+                    placeholder = "Type to Search..."
+                 
                   > </Select>
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>

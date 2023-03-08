@@ -16,62 +16,45 @@
 
 */
 import Index from "views/Index.js";
-import Electronic from "views/Electronic-s/Electronic"; 
 
 import { Printer, Scan, SmsTracking, Cd, Tree } from "iconsax-react";
-import ScanIndex from "views/Scan/scanIndex";
-import USBCD from "views/USB/USB-CD";
-import ChicagoTreeTown from "views/Chicago-Tree-Town/CTT";
 
 var routes = [
   {
-    path: "/index",
+    path: "",
     name: "Print",
     component: Index,
-    layout: "/admin",
+    layout: "/",
     icon: <Printer/>
   },
   {
     path: "/scan",
     name: "Scan",
-    component: ScanIndex,
+    // component: Icons,
     layout: "/admin",
     icon: <Scan  variant="Outline"/>
   },
   {
     path: "/electronic",
     name: "Electronic S and S",
-    component: Electronic,
+    // component: Maps,
     layout: "/admin",
     icon: <SmsTracking variant="Outline"/>
   },
   {
     path: "/usb",
     name: "USB / CD",
-    component: USBCD,
+    // component: Profile,
     layout: "/admin",
     icon: <Cd variant="Outline"/>
   },
   {
     path: "/chicago",
     name: "Chicago - Tree Towns",
-    component: ChicagoTreeTown,
+    // component: Tables,
     layout: "/admin",
-    icon: <Tree color="#000000" variant="Outline"/>
+    icon: <Tree  variant="Outline"/>
   },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   icon: "ni ni-key-25 text-info",
-  //   component: Login,
-  //   layout: "/auth"
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   icon: "ni ni-circle-08 text-pink",
-  //   component: Register,
-  //   layout: "/auth"
-  // }
+  
 ];
 export default routes;
