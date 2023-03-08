@@ -278,4 +278,3 @@ const Electronic = (props) => {
 };
 
 export default Electronic;
-

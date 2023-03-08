@@ -233,5 +233,4 @@ const ChicagoTreeTown = (props) => {
         </>
     );
 };
-
 export default ChicagoTreeTown;
