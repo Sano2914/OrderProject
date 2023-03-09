@@ -33,6 +33,7 @@ import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import AllRequestsModal from "./examples/AllRequestsModal";
 import SignAndSeal from "./examples/SignAndSeal";
+import AllPopUpModel from "./examples/AllPopUp";
 
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
@@ -41,23 +42,23 @@ const Index = (props) => {
   const [open2, setOpen2] = useState(false);
   const Option = Select.Option;
 
-  const handleok = () =>{
+  const handleok = () => {
     setOpen(false);
-      setOpen2(false);
+    setOpen2(false);
   }
   const handleCancel = () => {
     setOpen(false);
     setOpen2(false);
   }
-  
+
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
-  
+
   function handleBlur() {
     console.log('blur');
   }
-  
+
   function handleFocus() {
     console.log('focus');
   }
@@ -66,7 +67,7 @@ const Index = (props) => {
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
-  
+
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -83,7 +84,7 @@ const Index = (props) => {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
-                    <h6 className=" header-white ls-1 mb-1" style={{color:"#7E7E7E"}}>
+                    <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                       Request Type
                     </h6>
                   </div>
@@ -98,10 +99,10 @@ const Index = (props) => {
 
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
-                    
-                  <Row>
+
+                    <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className=""  onClick={() => setOpen2(true)}></Checkbox>
+                        <Checkbox className="" onClick={() => setOpen2(true)}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -109,7 +110,7 @@ const Index = (props) => {
                     </Row>                    </Col>
                   <Col lg="7" className=' header-3 font12'>
                     Select this option if you need PDF / Word document printed with the option of requesting a sign and seal of the documents printed
-                    </Col>
+                  </Col>
                 </Row>
                 <div className='header-2 ls-1 mt-3'>
                   Print
@@ -125,42 +126,45 @@ const Index = (props) => {
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                     {/* <button className="choose mt-2 ">Choose File</button> */}
                     {/* <Upload> */}
-                      <button className="pl-3 pr-3 button-request"  onClick={() => setOpen(true)}>Choose File</button>
-                      {/* </Upload> */}
+                    <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
+                    {/* </Upload> */}
                   </label>
                   <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <Button type="submit">
+                <Button type="submit"   onClick={() => setOpen(true)}>  
                   Submit Request
                 </Button>
-                <Modal 
-                  // title="Print"
+                <Modal
                   centered
                   open={open}
                   onOk={handleok}
                   onCancel={handleCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-3">
-                    <Col className="ml-2" style={{textAlign:'start'}}>
-                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
-                    </Col>
-                    <Col>
-                        <Button key="submit" onClick={handleok}>Submit Request</Button>
-                    </Col>
-                    </Row>,
-                    
+                    <Row className="p-4 " style={{display:'flex'}}>
+                      <div className="ml-4" >
+                        <button style={{ textAlign:"center", height:"43px", width: "152px",fontFamily:'Manrope', fontSize:"14px"}} className="button-request padding " onClick={handleCancel}>Stay Here</button>
+                      </div>
+                      
+                      
+                      <div>
+                        <Button classname="ml-5px" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                      </div>
+                    </Row>
+
                   ]}
-                 
-                  width={1300}
+
+                  height ={"381px)"}
+                  width={"384px"}
+                  
                 >
-                  
-                  <AllRequestsModal/>
-                  
+
+                  <AllPopUpModel/>
+
                 </Modal>
-                <Modal 
+                <Modal
                   // title="signandseal"
                   centered
                   open={open2}
@@ -169,27 +173,27 @@ const Index = (props) => {
                   closable={false}
                   footer={[
                     <Row className="p-3">
-                    <Col className="ml-2" style={{textAlign:'start'}}>
+                      <Col className="ml-2" style={{ textAlign: 'start' }}>
                         <button className="button-request padding" onClick={handleCancel}>Go Back</button>
-                    </Col>
-                    <Col>
+                      </Col>
+                      <Col>
                         <Button key="submit" onClick={handleok}>Submit Request</Button>
-                    </Col>
+                      </Col>
                     </Row>,
-                    
+
                   ]}
-                 
+
                   width={1300}
                 >
-                  
-                  <SignAndSeal/>
-                  
+
+                  <SignAndSeal />
+
                 </Modal>
               </CardBody>
             </Card>
           </Col>
           <Col xl="4">
-            <Card className="" style ={{height:'100%'}}>
+            <Card className="" style={{ height: '100%' }}>
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col">
@@ -204,14 +208,14 @@ const Index = (props) => {
 
                   <label className="labels">Project Number</label>
                   <Select
-                  showSearch
-                  size= {"large"}
-                  style={{  width: '100%'}}
-                  placeholder = "Type to Search..."
+                    showSearch
+                    size={"large"}
+                    style={{ width: '100%' }}
+                    placeholder="Type to Search..."
 
                   > </Select>
-                  
-                {/* <select
+
+                  {/* <select
                   className="inputs"
                   placeholder="Type to Search...">
                     <option value =""></option>
@@ -220,32 +224,32 @@ const Index = (props) => {
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
                     {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
-                    <DatePicker 
-                    name={""} 
-                    className = "inputs"
-                    suffixIcon = {<CalendarCircle style={{color:"black"}}    />} 
-                    placeholder = "Select..."
-                    hideTime 
-                    format="MM/DD/YYYY" />
-                    </div>
+                    <DatePicker
+                      name={""}
+                      className="inputs"
+                      suffixIcon={<CalendarCircle style={{ color: "black" }} />}
+                      placeholder="Select..."
+                      hideTime
+                      format="MM/DD/YYYY" />
+                  </div>
                   <div>
                     {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                     <TimePicker
-                    name={""} 
-                    suffixIcon = {<Clock style={{color:"black"}} />} 
-                    placeholder = "00 : 00 PM"
-                    hideSeconds
-                    format = "HH:mm A"
-                    showTime={{ format: 'HH:mm A', use12Hours:true }}
+                      name={""}
+                      suffixIcon={<Clock style={{ color: "black" }} />}
+                      placeholder="00 : 00 PM"
+                      hideSeconds
+                      format="HH:mm A"
+                      showTime={{ format: 'HH:mm A', use12Hours: true }}
                     />
-                    </div>
+                  </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
-                  size= {"large"}
-                  style={{ width: '100%' }}
-                                    showSearch
-                    placeholder = "Type to Search..."
-                 
+                    size={"large"}
+                    style={{ width: '100%' }}
+                    showSearch
+                    placeholder="Type to Search..."
+
                   > </Select>
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>
