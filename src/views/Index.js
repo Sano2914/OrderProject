@@ -32,19 +32,24 @@ import {
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import AllRequestsModal from "./examples/AllRequestsModal";
+import SignAndSeal from "./examples/SignAndSeal";
 
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const Option = Select.Option;
 
   const handleok = () =>{
     setOpen(false);
+      setOpen2(false);
   }
   const handleCancel = () => {
     setOpen(false);
+    setOpen2(false);
   }
+  
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
@@ -96,7 +101,7 @@ const Index = (props) => {
                     
                   <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className=""></Checkbox>
+                        <Checkbox className=""  onClick={() => setOpen2(true)}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -119,13 +124,15 @@ const Index = (props) => {
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                     {/* <button className="choose mt-2 ">Choose File</button> */}
-                    <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
+                    {/* <Upload> */}
+                      <button className="pl-3 pr-3 button-request"  onClick={() => setOpen(true)}>Choose File</button>
+                      {/* </Upload> */}
                   </label>
                   <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <Button type="submit" onClick={() => setOpen(true)}>
+                <Button type="submit">
                   Submit Request
                 </Button>
                 <Modal 
@@ -151,6 +158,31 @@ const Index = (props) => {
                 >
                   
                   <AllRequestsModal/>
+                  
+                </Modal>
+                <Modal 
+                  // title="signandseal"
+                  centered
+                  open={open2}
+                  onOk={handleok}
+                  onCancel={handleCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-3">
+                    <Col className="ml-2" style={{textAlign:'start'}}>
+                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                    </Col>
+                    <Col>
+                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                    </Col>
+                    </Row>,
+                    
+                  ]}
+                 
+                  width={1300}
+                >
+                  
+                  <SignAndSeal/>
                   
                 </Modal>
               </CardBody>

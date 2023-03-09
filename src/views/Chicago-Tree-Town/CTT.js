@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio,Modal } from 'antd';
+import ChicagoModal from "views/examples/ChicagoModal";
 // import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
@@ -33,6 +34,13 @@ import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 
 const ChicagoTreeTown = (props) => {
+    const [open, setOpen] = useState(false);
+    const handleok = () =>{
+        setOpen(false);
+      }
+      const handleCancel = () => {
+        setOpen(false);
+      }
     const [activeNav, setActiveNav] = useState(1);
     const [chartExample1Data, setChartExample1Data] = useState("data1");
     const Option = Select.Option;
@@ -99,7 +107,9 @@ const ChicagoTreeTown = (props) => {
 
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                                         {/* <button className="choose mt-2 ">Choose File</button> */}
-                                        <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                                        {/* <Upload> */}
+                                            <Button className="pl-3 pr-3" onClick={() => setOpen(true)}>Choose File</Button>
+                                            {/* </Upload> */}
                                     </label>
                                     <label for="images" class="drop-containers p-4" ></label>
                                 </div>
@@ -170,7 +180,32 @@ const ChicagoTreeTown = (props) => {
                                         />
                                     </Form>
                                 </div>
-                                <Button className="mt-5" key="submit">Submit Request</Button>
+                                <Button className="mt-5" key="submit" >Submit Request</Button>
+                                <Modal 
+                  // title="Print"
+                  centered
+                  open={open}
+                  onOk={handleok}
+                  onCancel={handleCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-3">
+                    <Col className="ml-2" style={{textAlign:'start'}}>
+                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                    </Col>
+                    <Col>
+                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                    </Col>
+                    </Row>,
+                    
+                  ]}
+                 
+                  width={1300}
+                >
+                  
+                  <ChicagoModal/>
+                  
+                </Modal>
                             </CardBody>
                         </Card>
                     </Col>
