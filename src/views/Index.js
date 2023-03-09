@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Chart from "chart.js";
 import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Modal } from 'antd';
@@ -29,7 +28,7 @@ import {
   chartExample1,
   chartExample2
 } from "variables/charts.js";
-import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
+import { Notepad2, Clock, CalendarCircle, Box1, InfoCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import AllRequestsModal from "./examples/AllRequestsModal";
 import SignAndSeal from "./examples/SignAndSeal";
@@ -39,16 +38,14 @@ const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
+  const [borderBoxOpen, setBorderBoxOpen] = useState(false);
   const Option = Select.Option;
 
   const handleok = () => {
     setOpen(false);
-    setOpen2(false);
   }
   const handleCancel = () => {
     setOpen(false);
-    setOpen2(false);
   }
 
   function handleChange(value) {
@@ -77,7 +74,26 @@ const Index = (props) => {
     <>
       <Header />
       {/* Page content */}
+
       <Container fluid className="pl-4 ml-3">
+        {
+          borderBoxOpen ?
+            <Card className=" borderBox mb-5 ml-10" >
+              <div className="d-flex">
+                <div> <InfoCircle className="attentionInfoIcon mr-5" style={{ color: '#264B5D' }} /></div>
+                <div>
+                  <div className="boxFirstRowtext"
+                  >
+                    It is past 2 PM EST deadline for new orders. Depending on the time and workload, this order may not be completed by the end of the day.
+                  </div>
+                  <div className="boxSecondRowtext pt-2 "
+                  >
+                    For more information, please call the plotroom.
+                  </div>
+                </div>
+              </div>
+            </Card> : ''
+        }
         <Row>
           <Col xl="8">
             <Card className="bg-white " >
@@ -96,13 +112,11 @@ const Index = (props) => {
                     Sign & Seal
                   </h6>
                 </div>
-
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
-
                     <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className="" onClick={() => setOpen2(true)}></Checkbox>
+                        <Checkbox className="" onClick={() => setBorderBoxOpen(!borderBoxOpen)}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -133,7 +147,7 @@ const Index = (props) => {
 
                   </label>
                 </div>
-                <Button type="submit"   onClick={() => setOpen(true)}>  
+                <Button type="submit" onClick={() => setOpen(true)}>
                   Submit Request
                 </Button>
                 <Modal
@@ -143,31 +157,31 @@ const Index = (props) => {
                   onCancel={handleCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{display:'flex'}}>
+                    <Row className="p-4 " style={{ display: 'flex' }}>
                       <div className="ml-4" >
-                        <button style={{ textAlign:"center", height:"43px", width: "152px",fontFamily:'Manrope', fontSize:"14px"}} className="button-request padding " onClick={handleCancel}>Stay Here</button>
+                        <button style={{ textAlign: "center", height: "43px", width: "152px", fontFamily: 'Manrope', fontSize: "14px" }} className="button-request padding " onClick={handleCancel}>Stay Here</button>
                       </div>
-                      
-                      
+
+
                       <div>
-                        <Button classname="ml-5px" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                        <Button classname="ml-5px" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
                       </div>
                     </Row>
 
                   ]}
 
-                  height ={"381px)"}
+                  height={"381px)"}
                   width={"384px"}
-                  
+
                 >
 
-                  <AllPopUpModel/>
+                  <AllPopUpModel />
 
                 </Modal>
                 <Modal
                   // title="signandseal"
                   centered
-                  open={open2}
+                  open={false}
                   onOk={handleok}
                   onCancel={handleCancel}
                   closable={false}
@@ -205,16 +219,14 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 <form className="p-2">
-
                   <label className="labels">Project Number</label>
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
                     placeholder="Type to Search..."
-
-                  > </Select>
-
+                  >
+                     </Select>
                   {/* <select
                   className="inputs"
                   placeholder="Type to Search...">
