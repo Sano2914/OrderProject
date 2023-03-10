@@ -33,19 +33,30 @@ import Header from "components/Headers/Header.js";
 import AllRequestsModal from "./examples/AllRequestsModal";
 import SignAndSeal from "./examples/SignAndSeal";
 import AllPopUpModel from "./examples/AllPopUp";
-
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
-  const [open, setOpen] = useState(false);
+  const [open123, setOpen123] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
   const Option = Select.Option;
 
   const handleok = () => {
-    setOpen(false);
+    setOpen123(false);
+    // setOpen2(false);
   }
   const handleCancel = () => {
-    setOpen(false);
+    setOpen123(false);
+    // setOpen2(false);
+  }
+  const handleModalok = () => {
+    setModalOpen(false);
+    // setOpen2(false);
+  }
+  const handleModalCancel = () => {
+    setModalOpen(false);
+    // setOpen2(false);
   }
 
   function handleChange(value) {
@@ -112,8 +123,10 @@ const Index = (props) => {
                     Sign & Seal
                   </h6>
                 </div>
+
                 <Row className="align-items-center pt-3">
                   <Col lg="5">
+
                     <Row>
                       <Col lg="2" className="pr-0">
                         <Checkbox className="" onClick={() => setBorderBoxOpen(!borderBoxOpen)}></Checkbox>
@@ -140,45 +153,41 @@ const Index = (props) => {
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                     {/* <button className="choose mt-2 ">Choose File</button> */}
                     {/* <Upload> */}
-                    <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
+                    <button className="pl-3 pr-3 button-request" onClick={() => setOpen123(true)}>Choose File</button>
                     {/* </Upload> */}
                   </label>
                   <label for="images" class="drop-containers p-4" >
 
                   </label>
                 </div>
-                <Button type="submit" onClick={() => setOpen(true)}>
+                <Button type="submit" onClick={() => setModalOpen(true)}>
                   Submit Request
                 </Button>
                 <Modal
+                  // title="Print"
                   centered
-                  open={open}
+                  open={open123}
                   onOk={handleok}
                   onCancel={handleCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{ display: 'flex' }}>
-                      <div className="ml-4" >
-                        <button style={{ textAlign: "center", height: "43px", width: "152px", fontFamily: 'Manrope', fontSize: "14px" }} className="button-request padding " onClick={handleCancel}>Stay Here</button>
-                      </div>
-
-
-                      <div>
-                        <Button classname="ml-5px" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
-                      </div>
-                    </Row>
+                    <Row className="p-3">
+                      <Col className="ml-2" style={{ textAlign: 'start' }}>
+                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                      </Col>
+                      <Col>
+                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                      </Col>
+                    </Row>,
 
                   ]}
 
-                  height={"381px)"}
-                  width={"384px"}
+                  // height={"381px)"}
+                  width={"1300px"}                >
 
-                >
-
-                  <AllPopUpModel />
-
+                  <AllRequestsModal />
                 </Modal>
-                <Modal
+                {/* <Modal
                   // title="signandseal"
                   centered
                   open={false}
@@ -202,6 +211,30 @@ const Index = (props) => {
 
                   <SignAndSeal />
 
+                </Modal> */}
+                <Modal
+                  // title="Print"
+                  centered
+                  open={modalOpen}
+                  onOk={handleModalok}
+                  onCancel={handleModalCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-3">
+                      <Col className="ml-2" style={{ textAlign: 'start' }}>
+                        <button className="button-request padding" onClick={handleModalCancel}>Stay here</button>
+                      </Col>
+                      <Col>
+                        <Button key="submit" onClick={handleModalok}>Continue</Button>
+                      </Col>
+                    </Row>,
+
+                  ]}
+
+                  height ={"381px"}
+                  width={"384px"}              >
+
+                  <AllPopUpModel />
                 </Modal>
               </CardBody>
             </Card>
@@ -219,14 +252,16 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 <form className="p-2">
+
                   <label className="labels">Project Number</label>
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
                     placeholder="Type to Search..."
-                  >
-                     </Select>
+
+                  > </Select>
+
                   {/* <select
                   className="inputs"
                   placeholder="Type to Search...">
