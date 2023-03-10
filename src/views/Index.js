@@ -38,17 +38,17 @@ const Index = (props) => {
   const [chartExample1Data, setChartExample1Data] = useState("data1");
   const [open123, setOpen123] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
+  const [open1, setOpen1] = useState(false);
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
   const Option = Select.Option;
 
   const handleok = () => {
     setOpen123(false);
-    // setOpen2(false);
+    setOpen1(false);
   }
   const handleCancel = () => {
     setOpen123(false);
-    // setOpen2(false);
+    setOpen1(false);
   }
   const handleModalok = () => {
     setModalOpen(false);
@@ -129,7 +129,7 @@ const Index = (props) => {
 
                     <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className="" onClick={() => setBorderBoxOpen(!borderBoxOpen)}></Checkbox>
+                        <Checkbox className="" onClick={() => { setOpen1(true);setBorderBoxOpen(!borderBoxOpen);}}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -187,10 +187,10 @@ const Index = (props) => {
 
                   <AllRequestsModal />
                 </Modal>
-                {/* <Modal
+                <Modal
                   // title="signandseal"
                   centered
-                  open={false}
+                  open={open1}
                   onOk={handleok}
                   onCancel={handleCancel}
                   closable={false}
@@ -211,7 +211,7 @@ const Index = (props) => {
 
                   <SignAndSeal />
 
-                </Modal> */}
+                </Modal>
                 <Modal
                   // title="Print"
                   centered
