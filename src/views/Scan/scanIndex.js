@@ -32,10 +32,16 @@ import {
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import TextArea from "antd/es/input/TextArea";
+import moment from "moment";
 
 const ScanIndex = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
+  const [borderBoxOpen, setBorderBoxOpen] = useState(false);
+  const [firstDropdownValue, setFirstDropdownValue] = useState('');
+  const [orderDropdownValue, setOrderDropdownValue] = useState('');
+  const [dateChange, setDateChange] = useState('');
+  const [timeChange, setTimeChange] = useState('');
   const Option = Select.Option;
 
   function handleChange(value) {
@@ -90,28 +96,28 @@ const ScanIndex = (props) => {
                   Name your file
                 </div>
                 {/* <Row className="align-items-center pt-3"> */}
-                    <Row className="mt-2">
-                      <Col className=' header-3 font12'>
-                        <Input
-                          type="text"
-                          size={"large"}
-                          style={{ width: '100%' }}
-                          placeholder="FileName.pdf"
-                        />
-                      </Col>
-                      <Col className="pr-0" style={{textAlign:'end'}}>
-                        <Checkbox className="">Color</Checkbox>
-                      </Col>
-                    </Row>
-                    <div className='font14  pl-2 mt-4'>Where should we put your file?</div>
+                <Row className="mt-2">
+                  <Col className=' header-3 font12'>
+                    <Input
+                      type="text"
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="FileName.pdf"
+                    />
+                  </Col>
+                  <Col className="pr-0" style={{ textAlign: 'end' }}>
+                    <Checkbox className="">Color</Checkbox>
+                  </Col>
+                </Row>
+                <div className='font14  pl-2 mt-4'>Where should we put your file?</div>
                 {/* </Row> */}
 
                 <div className='mt-2'>
-                  <Card style={{height:300}}>
+                  <Card style={{ height: 300 }}>
                     <div className="p-3 putOnFile">
-                    Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents
+                      Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents
                     </div>
-                  
+
                   </Card>                  {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
                   {/* <div className="note p-4">
                       <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
@@ -142,48 +148,86 @@ const ScanIndex = (props) => {
                 <form className="p-2">
 
                   <label className="labels">Project Number</label>
+
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
-
-
                     placeholder="Type to Search..."
-
-                  > </Select>
+                    optionFilterProp="children"
+                    onChange={(e) => setFirstDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                  {firstDropdownValue ?
+                    <TextArea className="mt-3" style={{ height: '200px' }}
+                      placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                    >
+                    </TextArea> : ''
+                  }
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
-                    {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                     <DatePicker
                       name={""}
                       className="inputs"
                       suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                       placeholder="Select..."
                       hideTime
+                      onChange={(e) => {
+                        let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatDate ? setDateChange(formatDate) : setDateChange('')
+                      }}
                       format="MM/DD/YYYY" />
                   </div>
                   <div>
-                    {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                     <TimePicker
                       name={""}
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
                       format="HH:mm A"
+                      // value={timeChange}
                       showTime={{ format: 'HH:mm A', use12Hours: true }}
+                      onChange={(e) => {
+                        let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                      }}
                     />
+                    {
+                      dateChange && timeChange ?
+                        <TextArea className="mt-3" style={{ height: '200px' }}
+                          placeholder='Please list the reason for the chosen earlier due time.'
+                        >
+                        </TextArea> : ''
+                    }
+
                   </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
                     size={"large"}
                     style={{ width: '100%' }}
                     showSearch
+                    optionFilterProp="children"
                     placeholder="Type to Search..."
-
-                  > </Select>
-
-
+                    onChange={(e) => setOrderDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {
+                    orderDropdownValue ?
+                      <TextArea className="mt-3" style={{ height: '200px' }}
+                        placeholder='Please list the reason.'
+                      >
+                      </TextArea> : ''
+                  }
 
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>
