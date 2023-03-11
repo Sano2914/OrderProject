@@ -337,8 +337,10 @@ color: #7E7E7E;
   color: #7E7E7E;
   }
 
-  .modelText{
-    font-family: 'Manrope';
+  .PopUpNormalText{
+width: 320px;
+height: 140px;
+font-family: 'Manrope';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -346,7 +348,17 @@ line-height: 200%;
 text-align: center;
 color: #7E7E7E;
   }
-  .modelBoldText{
+  .PopUpNormalText1{
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 200%;
+text-align: center;
+color: #7E7E7E;
+
+  }
+  .PopUpBoldText{
     font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
@@ -354,5 +366,24 @@ font-size: 16px;
 line-height: 22px;
 text-align: center;
 color: #000000;
+
+  }
+
+  .PopUpKeyText{
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 19px;
+color: #000000;
+
+  }
+  .PopUpContinueText{
+    font-family: 'Manrope';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 19px;
+color: #FFFFFF;
 
   }
