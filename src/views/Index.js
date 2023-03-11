@@ -36,7 +36,6 @@ import DetectedPopUp from "./examples/DetectedPopUp";
 import ProcessPopUp from "./examples/ProcessPopUp";
 import PopUpFailed from "./examples/PopUpFailed";
 import ReceivedSuccessfullyPopUp from "./examples/ReceivedSuccessfullyPopUp";
-import AllPopUpModel from "./examples/AllPopUp";
 import moment from "moment";
 import TextArea from "antd/es/input/TextArea";
 const Index = (props) => {
@@ -46,8 +45,8 @@ const Index = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [PopUpOpen, setPopUp] = useState(false);
-  const[popUpOpen1, setPopUp1]= useState(false);
-  const[popUpOpen2, setPopUp2]= useState(false);
+  const [popUpOpen1, setPopUp1] = useState(false);
+  const [popUpOpen2, setPopUp2] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
   const [firstDropdownValue, setFirstDropdownValue] = useState('');
@@ -90,7 +89,7 @@ const Index = (props) => {
     setPopUp1(false);
     // setOpen2(false);
   }
-   const handlePopUp2Ok = () => {
+  const handlePopUp2Ok = () => {
     setPopUp2(false);
     // setOpen2(false);
   }
@@ -175,7 +174,7 @@ const Index = (props) => {
 
                     <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className="" onClick={() => { setOpen1(true);setBorderBoxOpen(!borderBoxOpen);}}></Checkbox>
+                        <Checkbox className="" onClick={() => { setOpen1(true); setBorderBoxOpen(!borderBoxOpen); }}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -215,7 +214,7 @@ const Index = (props) => {
                 <Button type="submit" onClick={() => setPopUp1(true)}>
                   PopUp Message1
                 </Button>
-                 <Button type="submit" onClick={() => setPopUp2(true)}>
+                <Button type="submit" onClick={() => setPopUp2(true)}>
                   PopUp Message2
                 </Button>
                 <Modal
@@ -276,31 +275,33 @@ const Index = (props) => {
                   onCancel={handleModalCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{display:'flex'}}>
-                    <div className="ml-4" >
-                      <button style={{ textAlign:"center", height:"43px", width: "152px", Radius:"8px", padding:"12px, 16px, 12px, 16px",
-                       gap:"8px", background:"#FFFFFF",border:" 1px solid #EDEDED"}} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
-                    </div>
+                    <Row className="p-4 " style={{ display: 'flex' }}>
+                      <div className="ml-4" >
+                        <button style={{
+                          textAlign: "center", height: "43px", width: "152px", Radius: "8px", padding: "12px, 16px, 12px, 16px",
+                          gap: "8px", background: "#FFFFFF", border: " 1px solid #EDEDED"
+                        }} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
+                      </div>
 
-                    <div>
-                      <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
-                    </div>
-                  </Row>
+                      <div>
+                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
+                      </div>
+                    </Row>
                   ]}
 
 
-                  height ={"381px"}
-                  width={"384px"}   
-                  left= {"528px"}
-                  top= {"391px"}
+                  height={"381px"}
+                  width={"384px"}
+                  left={"528px"}
+                  top={"391px"}
 
                 >
-                  <DetectedPopUp/>
+                  <DetectedPopUp />
                   {/* <ReceivedSuccessfullyPopUp/> */}
                   {/* <ProcessPopUp/> */}
                   {/* <PopUpFailed/> */}
 
-                  </Modal> 
+                </Modal>
                 <Modal
                   // title="Print"
                   centered
@@ -309,26 +310,23 @@ const Index = (props) => {
                   onCancel={handlePopUpCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{display:'flex'}}>
-                     {/* Received successfully PopUp */}
+                    <Row className="p-4 " style={{ display: 'flex' }}>
+                      {/* Received successfully PopUp */}
                       <div className="ml-7" >
                       </div>
 
                       <div>
-                        <Button classname="mx=7 PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                        <Button classname="mx=7 PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
                       </div>
                     </Row>
 
                   ]}
-                     height ={"437px"}
-                  width={"374px"}   
-                  left= {"528px"}
-                  top= {"291px"}
+                  height={"437px"}
+                  width={"374px"}
+                  left={"528px"}
+                  top={"291px"}
                 >
-                  <ReceivedSuccessfullyPopUp/>
-
-                  height={"381px"}
-                  width={"384px"}              >
+                  <ReceivedSuccessfullyPopUp />
 
 
                 </Modal>
@@ -341,24 +339,24 @@ const Index = (props) => {
                   onCancel={handlePopUp1Cancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{display:'flex'}}>
+                    <Row className="p-4 " style={{ display: 'flex' }}>
                       <div className="ml-7" >
                       </div>
 
                       <div>
-                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
                       </div>
                     </Row>
 
                   ]}
 
-                  height ={"437px"}
-                  width={"384px"}   
+                  height={"437px"}
+                  width={"384px"}
                 >
-                  <ProcessPopUp/>
-                  </Modal>
+                  <ProcessPopUp />
+                </Modal>
 
-                   <Modal
+                <Modal
                   // title="Print"
                   centered
                   open={popUpOpen2}
@@ -366,24 +364,24 @@ const Index = (props) => {
                   onCancel={handlePopUp2Cancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{display:'flex'}}>
-                     
+                    <Row className="p-4 " style={{ display: 'flex' }}>
+
                       <div className="ml-7" >
                       </div>
 
                       <div>
-                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
                       </div>
                     </Row>
 
                   ]}
 
-                  height ={"437px"}
-                  width={"384px"}   
-                
+                  height={"437px"}
+                  width={"384px"}
+
                 >
-                  <PopUpFailed/>
-                  </Modal>
+                  <PopUpFailed />
+                </Modal>
 
 
 
@@ -461,11 +459,13 @@ const Index = (props) => {
                       }}
                     />
                     {
-                      dateChange && timeChange ?
-                        <TextArea className="mt-3" style={{ height: '200px' }}
-                          placeholder='Please list the reason for the chosen earlier due time.'
-                        >
-                        </TextArea> : ''
+                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""
+                        :
+                        dateChange && timeChange ?
+                          <TextArea className="mt-3" style={{ height: '200px' }}
+                            placeholder='Please list the reason for the chosen earlier due time.'
+                          >
+                          </TextArea> : ''
                     }
 
                   </div>

@@ -199,11 +199,13 @@ const ScanIndex = (props) => {
                       }}
                     />
                     {
-                      dateChange && timeChange ?
-                        <TextArea className="mt-3" style={{ height: '200px' }}
-                          placeholder='Please list the reason for the chosen earlier due time.'
-                        >
-                        </TextArea> : ''
+                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""    
+                      :
+                        dateChange && timeChange ?
+                          <TextArea className="mt-3" style={{ height: '200px' }}
+                            placeholder='Please list the reason for the chosen earlier due time.'
+                          >
+                          </TextArea> : ''
                     }
 
                   </div>
