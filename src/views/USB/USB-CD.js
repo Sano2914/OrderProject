@@ -31,10 +31,17 @@ import {
 } from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import TextArea from "antd/es/input/TextArea";
+import moment from "moment";
 
 const USBCD = (props) => {
     const [activeNav, setActiveNav] = useState(1);
     const [chartExample1Data, setChartExample1Data] = useState("data1");
+    const [borderBoxOpen, setBorderBoxOpen] = useState(false);
+    const [firstDropdownValue, setFirstDropdownValue] = useState('');
+    const [orderDropdownValue, setOrderDropdownValue] = useState('');
+    const [dateChange, setDateChange] = useState('');
+    const [timeChange, setTimeChange] = useState('');
     const Option = Select.Option;
 
     function handleChange(value) {
@@ -89,7 +96,7 @@ const USBCD = (props) => {
                                     Request a USB / CD
                                 </div>
                                 <div className="mt-3 mr-1"
-                                style={{display: "flex",flexDirection: 'row'}}>
+                                    style={{ display: "flex", flexDirection: 'row' }}>
                                     <div className="col-4">
                                         <label className="labels font12">Select</label>
                                         <Select
@@ -156,54 +163,86 @@ const USBCD = (props) => {
                                 <form className="p-2">
 
                                     <label className="labels">Project Number</label>
+
                                     <Select
                                         showSearch
                                         size={"large"}
                                         style={{ width: '100%' }}
-
-
                                         placeholder="Type to Search..."
-
-                                    > </Select>
-
-                                    {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
+                                        optionFilterProp="children"
+                                        onChange={(e) => setFirstDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                                    {firstDropdownValue ?
+                                        <TextArea className="mt-3" style={{ height: '200px' }}
+                                            placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                                        >
+                                        </TextArea> : ''
+                                    }
 
                                     <label for="start" className="labels pt-3">Date/Time Required</label>
                                     <div className="pb-3">
-                                        {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                                         <DatePicker
                                             name={""}
                                             className="inputs"
                                             suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                                             placeholder="Select..."
                                             hideTime
+                                            onChange={(e) => {
+                                                let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatDate ? setDateChange(formatDate) : setDateChange('')
+                                            }}
                                             format="MM/DD/YYYY" />
                                     </div>
                                     <div>
-                                        {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                                         <TimePicker
                                             name={""}
                                             suffixIcon={<Clock style={{ color: "black" }} />}
                                             placeholder="00 : 00 PM"
                                             hideSeconds
                                             format="HH:mm A"
+                                            // value={timeChange}
                                             showTime={{ format: 'HH:mm A', use12Hours: true }}
+                                            onChange={(e) => {
+                                                let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                                            }}
                                         />
+                                        {
+                                            dateChange && timeChange ?
+                                                <TextArea className="mt-3" style={{ height: '200px' }}
+                                                    placeholder='Please list the reason for the chosen earlier due time.'
+                                                >
+                                                </TextArea> : ''
+                                        }
+
                                     </div>
                                     <label className="labels pt-3">Order For</label>
                                     <Select
                                         size={"large"}
                                         style={{ width: '100%' }}
                                         showSearch
+                                        optionFilterProp="children"
                                         placeholder="Type to Search..."
-
-                                    > </Select>
-
-
+                                        onChange={(e) => setOrderDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {
+                                        orderDropdownValue ?
+                                            <TextArea className="mt-3" style={{ height: '200px' }}
+                                                placeholder='Please list the reason.'
+                                            >
+                                            </TextArea> : ''
+                                    }
 
                                 </form>
                                 <label for="images" class="drop-containers p-4" ></label>
