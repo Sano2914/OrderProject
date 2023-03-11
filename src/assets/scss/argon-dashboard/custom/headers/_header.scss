@@ -383,12 +383,13 @@ body1 {
 
 
   .PopUpNormalText{
-width: 320px;
-height: 140px;
+// width: 320px;
+// height: 140px;
 font-family: 'Manrope';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
+padding: 17px;
 line-height: 200%;
 text-align: center;
 color: #7E7E7E;
@@ -419,6 +420,7 @@ font-family: 'Manrope';
 font-style: normal;
 font-weight: 500;
 font-size: 14px;
+border-radius: 8px;
 line-height: 19px;
 color: #000000;
 

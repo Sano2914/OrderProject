@@ -22,31 +22,18 @@ import {
 } from "reactstrap";
 
 // core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from "variables/charts.js";
+
 import { Notepad2, Clock, CalendarCircle, Box1, InfoCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import AllRequestsModal from "./examples/AllRequestsModal";
 import SignAndSeal from "./examples/SignAndSeal";
-import DetectedPopUp from "./examples/DetectedPopUp";
-import ProcessPopUp from "./examples/ProcessPopUp";
-import PopUpFailed from "./examples/PopUpFailed";
 import ReceivedSuccessfullyPopUp from "./examples/ReceivedSuccessfullyPopUp";
+// import AllPopUpModel from "./examples/AllPopUp";
 import moment from "moment";
 import TextArea from "antd/es/input/TextArea";
 const Index = (props) => {
-  const [activeNav, setActiveNav] = useState(1);
-  const [chartExample1Data, setChartExample1Data] = useState("data1");
   const [open, setOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
   const [PopUpOpen, setPopUp] = useState(false);
-  const [popUpOpen1, setPopUp1] = useState(false);
-  const [popUpOpen2, setPopUp2] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
   const [firstDropdownValue, setFirstDropdownValue] = useState('');
@@ -67,64 +54,16 @@ const Index = (props) => {
   const handleCancel = () => {
     setOpen(false);
   }
-  const handleModalok = () => {
-    setModalOpen(false);
-  }
-  const handleModalCancel = () => {
-    setModalOpen(false);
-  }
+
   const handlePopUpOk = () => {
     setPopUp(false);
-    // setOpen2(false);
+
   }
   const handlePopUpCancel = () => {
     setPopUp(false);
-    // setOpen2(false);
-  }
-  const handlePopUp1Ok = () => {
-    setPopUp1(false);
-    // setOpen2(false);
-  }
-  const handlePopUp1Cancel = () => {
-    setPopUp1(false);
-    // setOpen2(false);
-  }
-  const handlePopUp2Ok = () => {
-    setPopUp2(false);
-    // setOpen2(false);
-  }
-  const handlePopUp2Cancel = () => {
-    setPopUp2(false);
-    // setOpen2(false);
+
   }
 
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
-
-
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
-
-  function handleBlur() {
-    console.log('blur');
-  }
-
-  function handleFocus() {
-    console.log('focus');
-  }
-
-
-  if (window.Chart) {
-    parseOptions(Chart, chartOptions());
-  }
-
-  const toggleNavs = (e, index) => {
-    e.preventDefault();
-    setActiveNav(index);
-    setChartExample1Data("data" + index);
-  };
 
   return (
     <>
@@ -205,18 +144,10 @@ const Index = (props) => {
 
                   </label>
                 </div>
-                <Button type="submit" onClick={() => setModalOpen(true)}>
+                <Button type="submit" onClick={() => setPopUp(true)} >
                   Submit Request
                 </Button>
-                <Button type="submit" onClick={() => setPopUp(true)}>
-                  PopUp Message
-                </Button>
-                <Button type="submit" onClick={() => setPopUp1(true)}>
-                  PopUp Message1
-                </Button>
-                <Button type="submit" onClick={() => setPopUp2(true)}>
-                  PopUp Message2
-                </Button>
+
                 <Modal
                   // title="Print"
                   centered
@@ -267,41 +198,7 @@ const Index = (props) => {
                   <SignAndSeal />
 
                 </Modal>
-                <Modal
-                  // title="Print"
-                  centered
-                  open={modalOpen}
-                  onOk={handleModalok}
-                  onCancel={handleModalCancel}
-                  closable={false}
-                  footer={[
-                    <Row className="p-4 " style={{ display: 'flex' }}>
-                      <div className="ml-4" >
-                        <button style={{
-                          textAlign: "center", height: "43px", width: "152px", Radius: "8px", padding: "12px, 16px, 12px, 16px",
-                          gap: "8px", background: "#FFFFFF", border: " 1px solid #EDEDED"
-                        }} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
-                      </div>
 
-                      <div>
-                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
-                      </div>
-                    </Row>
-                  ]}
-
-
-                  height={"381px"}
-                  width={"384px"}
-                  left={"528px"}
-                  top={"391px"}
-
-                >
-                  <DetectedPopUp />
-                  {/* <ReceivedSuccessfullyPopUp/> */}
-                  {/* <ProcessPopUp/> */}
-                  {/* <PopUpFailed/> */}
-
-                </Modal>
                 <Modal
                   // title="Print"
                   centered
@@ -310,78 +207,28 @@ const Index = (props) => {
                   onCancel={handlePopUpCancel}
                   closable={false}
                   footer={[
-                    <Row className="p-4 " style={{ display: 'flex' }}>
+                    <Row className="p-3">
                       {/* Received successfully PopUp */}
-                      <div className="ml-7" >
-                      </div>
-
-                      <div>
-                        <Button classname="mx=7 PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
+                      <div className="col-8 ml-4">
+                        <Button classname=" PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
                       </div>
                     </Row>
-
                   ]}
-                  height={"437px"}
-                  width={"374px"}
-                  left={"528px"}
-                  top={"291px"}
+                  //  height ={"437px"}
+                  width={"375px"}
+                // left= {"528px"}
+                // top= {"291px"}
                 >
                   <ReceivedSuccessfullyPopUp />
 
 
+
+
                 </Modal>
 
-                <Modal
-                  // title="Print"
-                  centered
-                  open={popUpOpen1}
-                  onOk={handlePopUp1Ok}
-                  onCancel={handlePopUp1Cancel}
-                  closable={false}
-                  footer={[
-                    <Row className="p-4 " style={{ display: 'flex' }}>
-                      <div className="ml-7" >
-                      </div>
 
-                      <div>
-                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
-                      </div>
-                    </Row>
 
-                  ]}
 
-                  height={"437px"}
-                  width={"384px"}
-                >
-                  <ProcessPopUp />
-                </Modal>
-
-                <Modal
-                  // title="Print"
-                  centered
-                  open={popUpOpen2}
-                  onOk={handlePopUp2Ok}
-                  onCancel={handlePopUp2Cancel}
-                  closable={false}
-                  footer={[
-                    <Row className="p-4 " style={{ display: 'flex' }}>
-
-                      <div className="ml-7" >
-                      </div>
-
-                      <div>
-                        <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
-                      </div>
-                    </Row>
-
-                  ]}
-
-                  height={"437px"}
-                  width={"384px"}
-
-                >
-                  <PopUpFailed />
-                </Modal>
 
 
 
@@ -422,7 +269,6 @@ const Index = (props) => {
                     <Option value="2">Two</Option>
                     <Option value="3">Three</Option>
                   </Select>
-                  {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
                   {firstDropdownValue ?
                     <TextArea className="mt-3" style={{ height: '200px' }}
                       placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
@@ -459,13 +305,11 @@ const Index = (props) => {
                       }}
                     />
                     {
-                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""
-                        :
-                        dateChange && timeChange ?
-                          <TextArea className="mt-3" style={{ height: '200px' }}
-                            placeholder='Please list the reason for the chosen earlier due time.'
-                          >
-                          </TextArea> : ''
+                      dateChange && timeChange ?
+                        <TextArea className="mt-3" style={{ height: '200px' }}
+                          placeholder='Please list the reason for the chosen earlier due time.'
+                        >
+                        </TextArea> : ''
                     }
 
                   </div>

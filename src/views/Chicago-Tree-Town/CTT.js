@@ -3,8 +3,8 @@ import { useState } from "react";
 import Chart from "chart.js";
 import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio, Modal } from 'antd';
 import ChicagoModal from "views/examples/ChicagoModal";
-// import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
+import DetectedPopUp from "views/examples/DetectedPopUp";
 // reactstrap components
 import {
     Button,
@@ -24,12 +24,6 @@ import {
 } from "reactstrap";
 
 // core components
-import {
-    chartOptions,
-    parseOptions,
-    chartExample1,
-    chartExample2
-} from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import TextArea from "antd/es/input/TextArea";
@@ -41,38 +35,21 @@ const ChicagoTreeTown = (props) => {
     const [orderDropdownValue, setOrderDropdownValue] = useState('');
     const [dateChange, setDateChange] = useState('');
     const [timeChange, setTimeChange] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
     const handleok = () => {
         setOpen(false);
     }
     const handleCancel = () => {
         setOpen(false);
     }
-    const [activeNav, setActiveNav] = useState(1);
-    const [chartExample1Data, setChartExample1Data] = useState("data1");
+    const handleModalok = () => {
+        setModalOpen(false);
+      }
+      const handleModalCancel = () => {
+        setModalOpen(false);
+      }
     const Option = Select.Option;
 
-    function handleChange(value) {
-        console.log(`selected ${value}`);
-    }
-
-    function handleBlur() {
-        console.log('blur');
-    }
-
-    function handleFocus() {
-        console.log('focus');
-    }
-
-
-    if (window.Chart) {
-        parseOptions(Chart, chartOptions());
-    }
-
-    const toggleNavs = (e, index) => {
-        e.preventDefault();
-        setActiveNav(index);
-        setChartExample1Data("data" + index);
-    };
     return (
         <>
             <Header />
@@ -186,7 +163,7 @@ const ChicagoTreeTown = (props) => {
                                         />
                                     </Form>
                                 </div>
-                                <Button className="mt-5" key="submit" >Submit Request</Button>
+                                <Button className="mt-5" key="submit" onClick={() => setModalOpen(true)} >Submit Request</Button>
                                 <Modal
                                     // title="Print"
                                     centered
@@ -212,6 +189,33 @@ const ChicagoTreeTown = (props) => {
                                     <ChicagoModal />
 
                                 </Modal>
+                                <Modal
+                  // title="Print"
+                  centered
+                  open={modalOpen}
+                  onOk={handleModalok}
+                  onCancel={handleModalCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-4 " >
+                    <div className="ml-2 col-3" >
+                      <button style={{ textAlign:"center", height:"43px", width: "152px", BorderRadius:"8px", padding:"12px, 16px, 12px, 16px",
+                       gap:"8px", background:"#FFFFFF",border:" 1px solid #EDEDED"}} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
+                    </div>
+
+                    <div className="col-8 ml-3">
+                      <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                    </div>  
+                  </Row>
+                  ]}
+                  width={"375px"}   
+                  
+
+                >
+                  <DetectedPopUp/>
+              
+
+                  </Modal> 
                             </CardBody>
                         </Card>
                     </Col>

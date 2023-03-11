@@ -1,10 +1,9 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select } from 'antd';
-// react plugin used to create charts
-// import Select from "react-select";
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Modal } from 'antd';
 import { Line, Bar } from "react-chartjs-2";
+import ProcessPopUp from "views/examples/ProcessPopUp";
 // reactstrap components
 import {
     Button,
@@ -23,20 +22,13 @@ import {
 } from "reactstrap";
 
 // core components
-import {
-    chartOptions,
-    parseOptions,
-    chartExample1,
-    chartExample2
-} from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
 import TextArea from "antd/es/input/TextArea";
 import moment from "moment";
 
 const USBCD = (props) => {
-    const [activeNav, setActiveNav] = useState(1);
-    const [chartExample1Data, setChartExample1Data] = useState("data1");
+    const [popUpOpen1, setPopUp1] = useState(false);
     const [borderBoxOpen, setBorderBoxOpen] = useState(false);
     const [firstDropdownValue, setFirstDropdownValue] = useState('');
     const [orderDropdownValue, setOrderDropdownValue] = useState('');
@@ -44,28 +36,13 @@ const USBCD = (props) => {
     const [timeChange, setTimeChange] = useState('');
     const Option = Select.Option;
 
-    function handleChange(value) {
-        console.log(`selected ${value}`);
+    const handlePopUp1Ok = () => {
+        setPopUp1(false);
     }
-
-    function handleBlur() {
-        console.log('blur');
+    const handlePopUp1Cancel = () => {
+        setPopUp1(false);
     }
-
-    function handleFocus() {
-        console.log('focus');
-    }
-
-
-    if (window.Chart) {
-        parseOptions(Chart, chartOptions());
-    }
-
-    const toggleNavs = (e, index) => {
-        e.preventDefault();
-        setActiveNav(index);
-        setChartExample1Data("data" + index);
-    };
+ 
     return (
         <>
             <Header />
@@ -144,10 +121,33 @@ const USBCD = (props) => {
                                     <label for="images" class="drop-containers p-4" >
                                     </label>
                                 </div>
-                                <Button className="mt-5" key="submit">Submit Request</Button>
+                                <Button className="mt-5" key="submit" onClick={() => setPopUp1(true)}>Submit Request</Button>
                             </CardBody>
                         </Card>
                     </Col>
+                    <Modal
+                        // title="Print"
+                        centered
+                        open={popUpOpen1}
+                        onOk={handlePopUp1Ok}
+                        onCancel={handlePopUp1Cancel}
+                        closable={false}
+                        footer={[
+                            <Row className="p-4 ">
+
+
+                                <div className="col-8 ml-4">
+                                    <Button classname="PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handlePopUp1Cancel}>Continue</Button>
+                                </div>
+                            </Row>
+
+                        ]}
+
+                        // height ={"437px"}
+                        width={"384px"}
+                    >
+                        <ProcessPopUp />
+                    </Modal>
                     <Col xl="4">
                         <Card className="" style={{ height: '100%' }}>
                             <CardHeader className="bg-transparent">

@@ -11,8 +11,11 @@ const DetectedPopUp = (props) => {
     return (
         <>
             <hr className="m-0" />
-            <div className="mt-4 ml-4 mr-4">
-            <InfoCircle  className="popupIcon mt-3 ml-8" color="#264B5D" />
+            <div className="align-item-center">
+                <div className="mt-3 ml-8 pl-1">
+                <InfoCircle  className="popupIcon " color="#264B5D" />
+                </div>
+          
                 <div className="mt-4 PopUpBoldText" >
                 Unsaved Changes Detected
                 </div>
