@@ -36,33 +36,43 @@ import DetectedPopUp from "./examples/DetectedPopUp";
 import ProcessPopUp from "./examples/ProcessPopUp";
 import PopUpFailed from "./examples/PopUpFailed";
 import ReceivedSuccessfullyPopUp from "./examples/ReceivedSuccessfullyPopUp";
+import AllPopUpModel from "./examples/AllPopUp";
+import moment from "moment";
+import TextArea from "antd/es/input/TextArea";
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
-  const [open123, setOpen123] = useState(false);
+  const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [PopUpOpen, setPopUp] = useState(false);
   const[popUpOpen1, setPopUp1]= useState(false);
   const[popUpOpen2, setPopUp2]= useState(false);
+  const [open1, setOpen1] = useState(false);
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
+  const [firstDropdownValue, setFirstDropdownValue] = useState('');
+  const [orderDropdownValue, setOrderDropdownValue] = useState('');
+  const [dateChange, setDateChange] = useState('');
+  const [timeChange, setTimeChange] = useState('');
   const Option = Select.Option;
 
   const handleok = () => {
-    setOpen123(false);
-    // setOpen2(false);
+    setOpen(false);
+  }
+  const handleSignInok = () => {
+    setOpen1(false);
+  }
+  const handleSignInCancel = () => {
+    setOpen1(false);
   }
   const handleCancel = () => {
-    setOpen123(false);
-    // setOpen2(false);
+    setOpen(false);
   }
   const handleModalok = () => {
     setModalOpen(false);
-    // setOpen2(false);
   }
   const handleModalCancel = () => {
     setModalOpen(false);
-    // setOpen2(false);
   }
   const handlePopUpOk = () => {
     setPopUp(false);
@@ -116,6 +126,7 @@ const Index = (props) => {
     setActiveNav(index);
     setChartExample1Data("data" + index);
   };
+
   return (
     <>
       <Header />
@@ -164,7 +175,7 @@ const Index = (props) => {
 
                     <Row>
                       <Col lg="2" className="pr-0">
-                        <Checkbox className="" onClick={() => setBorderBoxOpen(!borderBoxOpen)}></Checkbox>
+                        <Checkbox className="" onClick={() => { setOpen1(true);setBorderBoxOpen(!borderBoxOpen);}}></Checkbox>
                       </Col>
                       <Col lg="10" className="pl-0 pt-1">
                         <span className='font14  pl-2'>Sign and Seal Required</span>
@@ -188,7 +199,7 @@ const Index = (props) => {
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                     {/* <button className="choose mt-2 ">Choose File</button> */}
                     {/* <Upload> */}
-                    <button className="pl-3 pr-3 button-request" onClick={() => setOpen123(true)}>Choose File</button>
+                    <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
                     {/* </Upload> */}
                   </label>
                   <label for="images" class="drop-containers p-4" >
@@ -210,7 +221,7 @@ const Index = (props) => {
                 <Modal
                   // title="Print"
                   centered
-                  open={open123}
+                  open={open}
                   onOk={handleok}
                   onCancel={handleCancel}
                   closable={false}
@@ -232,20 +243,20 @@ const Index = (props) => {
 
                   <AllRequestsModal />
                 </Modal>
-                {/* <Modal
+                <Modal
                   // title="signandseal"
                   centered
-                  open={false}
-                  onOk={handleok}
-                  onCancel={handleCancel}
+                  open={open1}
+                  onOk={handleSignInok}
+                  onCancel={handleSignInCancel}
                   closable={false}
                   footer={[
                     <Row className="p-3">
                       <Col className="ml-2" style={{ textAlign: 'start' }}>
-                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                        <button className="button-request padding" onClick={handleSignInCancel}>Go Back</button>
                       </Col>
                       <Col>
-                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                        <Button key="submit" onClick={handleSignInCancel}>Submit Request</Button>
                       </Col>
                     </Row>,
 
@@ -256,7 +267,7 @@ const Index = (props) => {
 
                   <SignAndSeal />
 
-                </Modal> */}
+                </Modal>
                 <Modal
                   // title="Print"
                   centered
@@ -276,6 +287,7 @@ const Index = (props) => {
                     </div>
                   </Row>
                   ]}
+
 
                   height ={"381px"}
                   width={"384px"}   
@@ -314,6 +326,10 @@ const Index = (props) => {
                   top= {"291px"}
                 >
                   <ReceivedSuccessfullyPopUp/>
+
+                  height={"381px"}
+                  width={"384px"}              >
+
 
                 </Modal>
 
@@ -394,50 +410,87 @@ const Index = (props) => {
                 <form className="p-2">
 
                   <label className="labels">Project Number</label>
+
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
                     placeholder="Type to Search..."
-
-                  > </Select>
-
-                  {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
+                    optionFilterProp="children"
+                    onChange={(e) => setFirstDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                  {firstDropdownValue ?
+                    <TextArea className="mt-3" style={{ height: '200px' }}
+                      placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                    >
+                    </TextArea> : ''
+                  }
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
-                    {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                     <DatePicker
                       name={""}
                       className="inputs"
                       suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                       placeholder="Select..."
                       hideTime
+                      onChange={(e) => {
+                        let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatDate ? setDateChange(formatDate) : setDateChange('')
+                      }}
                       format="MM/DD/YYYY" />
                   </div>
                   <div>
-                    {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                     <TimePicker
                       name={""}
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
                       format="HH:mm A"
+                      // value={timeChange}
                       showTime={{ format: 'HH:mm A', use12Hours: true }}
+                      onChange={(e) => {
+                        let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                      }}
                     />
+                    {
+                      dateChange && timeChange ?
+                        <TextArea className="mt-3" style={{ height: '200px' }}
+                          placeholder='Please list the reason for the chosen earlier due time.'
+                        >
+                        </TextArea> : ''
+                    }
+
                   </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
                     size={"large"}
                     style={{ width: '100%' }}
                     showSearch
+                    optionFilterProp="children"
                     placeholder="Type to Search..."
+                    onChange={(e) => setOrderDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {
+                    orderDropdownValue ?
+                      <TextArea className="mt-3" style={{ height: '200px' }}
+                        placeholder='Please list the reason.'
+                      >
+                      </TextArea> : ''
+                  }
 
-                  > </Select>
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>
               </CardBody>

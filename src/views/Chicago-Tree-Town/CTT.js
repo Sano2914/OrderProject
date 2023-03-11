@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio,Modal } from 'antd';
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio, Modal } from 'antd';
 import ChicagoModal from "views/examples/ChicagoModal";
 // import Select from "react-select";
 import { Line, Bar } from "react-chartjs-2";
@@ -32,15 +32,21 @@ import {
 } from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import TextArea from "antd/es/input/TextArea";
+import moment from "moment";
 
 const ChicagoTreeTown = (props) => {
     const [open, setOpen] = useState(false);
-    const handleok = () =>{
+    const [firstDropdownValue, setFirstDropdownValue] = useState('');
+    const [orderDropdownValue, setOrderDropdownValue] = useState('');
+    const [dateChange, setDateChange] = useState('');
+    const [timeChange, setTimeChange] = useState('');
+    const handleok = () => {
         setOpen(false);
-      }
-      const handleCancel = () => {
+    }
+    const handleCancel = () => {
         setOpen(false);
-      }
+    }
     const [activeNav, setActiveNav] = useState(1);
     const [chartExample1Data, setChartExample1Data] = useState("data1");
     const Option = Select.Option;
@@ -108,8 +114,8 @@ const ChicagoTreeTown = (props) => {
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
                                         {/* <button className="choose mt-2 ">Choose File</button> */}
                                         {/* <Upload> */}
-                                            <Button className="pl-3 pr-3" onClick={() => setOpen(true)}>Choose File</Button>
-                                            {/* </Upload> */}
+                                        <Button className="pl-3 pr-3" onClick={() => setOpen(true)}>Choose File</Button>
+                                        {/* </Upload> */}
                                     </label>
                                     <label for="images" class="drop-containers p-4" ></label>
                                 </div>
@@ -147,65 +153,65 @@ const ChicagoTreeTown = (props) => {
                                 </div>
                                 <div className="ml-2 mb-5">
                                     <Form className="mb-[2px]">
-                                    <label 
-                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
-                                    className="labels">Delivery or Pick-Up</label>
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Delivery or Pick-Up</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Delivery", value: "a"},
+                                                { label: "Delivery", value: "a" },
                                                 { label: "Pick Up", value: "b" }
                                             ]}
                                         />
                                     </Form>
                                     <Form className="pt-3">
-                                    <label 
-                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
-                                    className="labels">Bind or No-Bind</label>
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Bind or No-Bind</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Bind", value: "a"},
+                                                { label: "Bind", value: "a" },
                                                 { label: "No-Bind", value: "b" }
                                             ]}
                                         />
                                     </Form>
                                     <Form className="pt-3">
-                                    <label 
-                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
-                                    className="labels">Add 11 x 17 record set?</label>
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Add 11 x 17 record set?</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Yes", value: "a"},
+                                                { label: "Yes", value: "a" },
                                                 { label: "No", value: "b" }
                                             ]}
                                         />
                                     </Form>
                                 </div>
                                 <Button className="mt-5" key="submit" >Submit Request</Button>
-                                <Modal 
-                  // title="Print"
-                  centered
-                  open={open}
-                  onOk={handleok}
-                  onCancel={handleCancel}
-                  closable={false}
-                  footer={[
-                    <Row className="p-3">
-                    <Col className="ml-2" style={{textAlign:'start'}}>
-                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
-                    </Col>
-                    <Col>
-                        <Button key="submit" onClick={handleok}>Submit Request</Button>
-                    </Col>
-                    </Row>,
-                    
-                  ]}
-                 
-                  width={1300}
-                >
-                  
-                  <ChicagoModal/>
-                  
-                </Modal>
+                                <Modal
+                                    // title="Print"
+                                    centered
+                                    open={open}
+                                    onOk={handleok}
+                                    onCancel={handleCancel}
+                                    closable={false}
+                                    footer={[
+                                        <Row className="p-3">
+                                            <Col className="ml-2" style={{ textAlign: 'start' }}>
+                                                <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                                            </Col>
+                                            <Col>
+                                                <Button key="submit" onClick={handleok}>Submit Request</Button>
+                                            </Col>
+                                        </Row>,
+
+                                    ]}
+
+                                    width={1300}
+                                >
+
+                                    <ChicagoModal />
+
+                                </Modal>
                             </CardBody>
                         </Card>
                     </Col>
@@ -224,12 +230,28 @@ const ChicagoTreeTown = (props) => {
                                 <form className="p-2">
 
                                     <label className="labels">Project Number</label>
+
                                     <Select
                                         showSearch
                                         size={"large"}
                                         style={{ width: '100%' }}
                                         placeholder="Type to Search..."
-                                    > </Select>
+                                        optionFilterProp="children"
+                                        onChange={(e) => setFirstDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                                    {firstDropdownValue ?
+                                        <TextArea className="mt-3" style={{ height: '200px' }}
+                                            placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                                        >
+                                        </TextArea> : ''
+                                    }
+
                                     <label for="start" className="labels pt-3">Date/Time Required</label>
                                     <div className="pb-3">
                                         <DatePicker
@@ -238,6 +260,10 @@ const ChicagoTreeTown = (props) => {
                                             suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                                             placeholder="Select..."
                                             hideTime
+                                            onChange={(e) => {
+                                                let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatDate ? setDateChange(formatDate) : setDateChange('')
+                                            }}
                                             format="MM/DD/YYYY" />
                                     </div>
                                     <div>
@@ -247,16 +273,44 @@ const ChicagoTreeTown = (props) => {
                                             placeholder="00 : 00 PM"
                                             hideSeconds
                                             format="HH:mm A"
+                                            // value={timeChange}
                                             showTime={{ format: 'HH:mm A', use12Hours: true }}
+                                            onChange={(e) => {
+                                                let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                                            }}
                                         />
+                                        {
+                                            dateChange && timeChange ?
+                                                <TextArea className="mt-3" style={{ height: '200px' }}
+                                                    placeholder='Please list the reason for the chosen earlier due time.'
+                                                >
+                                                </TextArea> : ''
+                                        }
+
                                     </div>
                                     <label className="labels pt-3">Order For</label>
                                     <Select
                                         size={"large"}
                                         style={{ width: '100%' }}
                                         showSearch
+                                        optionFilterProp="children"
                                         placeholder="Type to Search..."
-                                    > </Select>
+                                        onChange={(e) => setOrderDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {
+                                        orderDropdownValue ?
+                                            <TextArea className="mt-3" style={{ height: '200px' }}
+                                                placeholder='Please list the reason.'
+                                            >
+                                            </TextArea> : ''
+                                    }
+
                                 </form>
                                 <label for="images" class="drop-containers p-4" ></label>
                             </CardBody>
