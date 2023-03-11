@@ -36,7 +36,6 @@ import DetectedPopUp from "./examples/DetectedPopUp";
 import ProcessPopUp from "./examples/ProcessPopUp";
 import PopUpFailed from "./examples/PopUpFailed";
 import ReceivedSuccessfullyPopUp from "./examples/ReceivedSuccessfullyPopUp";
-import AllPopUpModel from "./examples/AllPopUp";
 import moment from "moment";
 import TextArea from "antd/es/input/TextArea";
 const Index = (props) => {
