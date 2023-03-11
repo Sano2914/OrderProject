@@ -51,6 +51,12 @@ const Index = (props) => {
   const handleok = () => {
     setOpen(false);
   }
+  const handleSignInok = () => {
+    setOpen1(false);
+  }
+  const handleSignInCancel = () => {
+    setOpen1(false);
+  }
   const handleCancel = () => {
     setOpen(false);
   }
@@ -194,16 +200,16 @@ const Index = (props) => {
                   // title="signandseal"
                   centered
                   open={open1}
-                  onOk={handleok}
-                  onCancel={handleCancel}
+                  onOk={handleSignInok}
+                  onCancel={handleSignInCancel}
                   closable={false}
                   footer={[
                     <Row className="p-3">
                       <Col className="ml-2" style={{ textAlign: 'start' }}>
-                        <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                        <button className="button-request padding" onClick={handleSignInCancel}>Go Back</button>
                       </Col>
                       <Col>
-                        <Button key="submit" onClick={handleok}>Submit Request</Button>
+                        <Button key="submit" onClick={handleSignInCancel}>Submit Request</Button>
                       </Col>
                     </Row>,
 
