@@ -11,13 +11,16 @@ const ProcessPopUp = (props) => {
     return (
         <>
             <hr className="m-0" />
-            <div className="mt-5 ml-5 mr-5">
-            <More2 className="popupIcon mb-3 ml-7 " color="#264B5D" />
+            <div className="align-item-center ">
+            <div className="mt-3 ml-8 pl-2">
+            <More2 className="popupIcon " color="#264B5D" />
+            </div>
+           
                 <div className="mt-3 PopUpBoldText" >
                 Order Submission in Progress
                 </div>
 
-                <div className="mt-2 PopUpNormalText1">
+                <div className="mt-2 PopUpNormalText1 p-1">
                 Your order has been successfully placed and is currently being progressed.<br></br>
                 </div>
             </div>

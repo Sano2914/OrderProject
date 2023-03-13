@@ -1,11 +1,10 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select } from 'antd';
-// react plugin used to create charts
-// import Select from "react-select";
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Modal } from 'antd';
 import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
+import PopUpFailed from "views/examples/PopUpFailed";
 import {
   Button,
   Card,
@@ -35,6 +34,7 @@ import TextArea from "antd/es/input/TextArea";
 import moment from "moment";
 
 const ScanIndex = (props) => {
+  const [popUpOpen2, setPopUp2] = useState(false);
   const [activeNav, setActiveNav] = useState(1);
   const [chartExample1Data, setChartExample1Data] = useState("data1");
   const [borderBoxOpen, setBorderBoxOpen] = useState(false);
@@ -44,28 +44,14 @@ const ScanIndex = (props) => {
   const [timeChange, setTimeChange] = useState('');
   const Option = Select.Option;
 
-  function handleChange(value) {
-    console.log(`selected ${value}`);
+  const handlePopUp2Ok = () => {
+    setPopUp2(false);
+
   }
+  const handlePopUp2Cancel = () => {
+    setPopUp2(false);
 
-  function handleBlur() {
-    console.log('blur');
   }
-
-  function handleFocus() {
-    console.log('focus');
-  }
-
-
-  if (window.Chart) {
-    parseOptions(Chart, chartOptions());
-  }
-
-  const toggleNavs = (e, index) => {
-    e.preventDefault();
-    setActiveNav(index);
-    setChartExample1Data("data" + index);
-  };
   return (
     <>
       <Header />
@@ -129,10 +115,36 @@ const ScanIndex = (props) => {
                   {/* <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload> */}
                   <label for="images" class="drop-containers p-4" ></label>
                 </div>
-                <Button className="mt-5" key="submit">Submit Request</Button>
+                <Button className="mt-5" key="submit" onClick={() => setPopUp2(true)}>Submit Request</Button>
               </CardBody>
             </Card>
           </Col>
+          <Modal
+            // title="Print"
+            centered
+            open={popUpOpen2}
+            onOk={handlePopUp2Ok}
+            onCancel={handlePopUp2Cancel}
+            closable={false}
+            footer={[
+              <Row className="p-4 " style={{ display: 'flex' }}>
+
+                <div className="ml-7" >
+                </div>
+
+                <div>
+                  <Button classname=" PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handlePopUp2Cancel}>Continue</Button>
+                </div>
+              </Row>
+
+            ]}
+
+            // height ={"437px"}
+            width={"375px"}
+
+          >
+            <PopUpFailed />
+          </Modal>
           <Col xl="4">
             <Card className="" style={{ height: '100%' }}>
               <CardHeader className="bg-transparent">
@@ -199,8 +211,8 @@ const ScanIndex = (props) => {
                       }}
                     />
                     {
-                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""    
-                      :
+                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""
+                        :
                         dateChange && timeChange ?
                           <TextArea className="mt-3" style={{ height: '200px' }}
                             placeholder='Please list the reason for the chosen earlier due time.'
