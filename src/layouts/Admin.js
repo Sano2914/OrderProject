@@ -55,7 +55,7 @@ const Admin = (props) => {
         routes={routes}
         logo={{
           innerLink: "/admin/index",
-          imgSrc: require("../assets/img/brand/Corvanta.png"),
+          imgSrc: require("../assets/img/brand/favicon.png"),
           imgAlt: "..."
         }} 
       />
