@@ -12,7 +12,12 @@ const ReceivedSuccessfullyPopUp = (props) => {
         <>
             <hr className="m-0" />
             <div className="align-item-center">
-                <div className="mt-3 ml-8 pl-1">
+                <div className="mt-3 text-center">
+                {/* <I3DCubeScan
+                size="32"
+                className="msgicon" color="#555555"
+                variant="Outline"
+                /> */}
                 <I3DCubeScan className="popupIcon" color="#264B5D" />
                 </div>
           

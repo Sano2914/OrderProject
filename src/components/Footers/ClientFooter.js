@@ -1,12 +1,12 @@
 /*!
 
 =========================================================
-* Argon Dashboard React - v1.2.2
+* OrderProject Dashboard React - v1.2.2
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
+* Product Page: https://www.creative-tim.com/product/OrderProject-dashboard-react
 * Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+* Licensed under MIT (https://github.com/creativetimofficial/OrderProject-dashboard-react/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
 
@@ -24,7 +24,7 @@ const Login = () => {
   return (
     <>
       <footer className="py-5">
-        <Container>
+        {/* <Container>
           <Row className="align-items-center justify-content-xl-between">
             <Col xl="6">
               <div className="copyright text-center text-xl-left text-muted">
@@ -66,7 +66,7 @@ const Login = () => {
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md?ref=adr-auth-footer"
+                    href="https://github.com/creativetimofficial/OrderProject-dashboard/blob/master/LICENSE.md?ref=adr-auth-footer"
                     target="_blank"
                   >
                     MIT License
@@ -75,7 +75,7 @@ const Login = () => {
               </Nav>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
       </footer>
     </>
   );

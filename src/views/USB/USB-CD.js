@@ -115,8 +115,8 @@ const USBCD = (props) => {
                                         </div>
 
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                                        {/* <button className="choose mt-2 ">Choose File</button> */}
-                                        <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                                        
+                                        <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
                                     </label>
                                     <label for="images" class="drop-containers p-4" >
                                     </label>

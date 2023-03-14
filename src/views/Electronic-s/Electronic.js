@@ -159,8 +159,7 @@ const Electronic = (props) => {
                         <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
                       </div>
                       <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                      {/* <button className="choose mt-2 ">Choose File</button> */}
-                      <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                      <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
                     </label>
 
                   </div>

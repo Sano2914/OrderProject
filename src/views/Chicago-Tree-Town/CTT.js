@@ -89,9 +89,9 @@ const ChicagoTreeTown = (props) => {
                                         </div>
 
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                                        {/* <button className="choose mt-2 ">Choose File</button> */}
+                                       
                                         {/* <Upload> */}
-                                        <Button className="pl-3 pr-3" onClick={() => setOpen(true)}>Choose File</Button>
+                                        <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
                                         {/* </Upload> */}
                                     </label>
                                     <label for="images" class="drop-containers p-4" ></label>

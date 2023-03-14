@@ -135,7 +135,7 @@ const Index = (props) => {
                     </div>
 
                     <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                    {/* <button className="choose mt-2 ">Choose File</button> */}
+              
                     {/* <Upload> */}
                     <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
                     {/* </Upload> */}
