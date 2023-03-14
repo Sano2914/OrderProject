@@ -1,9 +1,10 @@
 
 import { useState } from "react";
 import Chart from "chart.js";
-import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio } from 'antd';
-// import Select from "react-select";
+import { Spin, Checkbox, Input, DatePicker, TimePicker, Upload, Select, Radio, Modal } from 'antd';
+import ChicagoModal from "views/examples/ChicagoModal";
 import { Line, Bar } from "react-chartjs-2";
+import DetectedPopUp from "views/examples/DetectedPopUp";
 // reactstrap components
 import {
     Button,
@@ -23,42 +24,32 @@ import {
 } from "reactstrap";
 
 // core components
-import {
-    chartOptions,
-    parseOptions,
-    chartExample1,
-    chartExample2
-} from "variables/charts.js";
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import TextArea from "antd/es/input/TextArea";
+import moment from "moment";
 
 const ChicagoTreeTown = (props) => {
-    const [activeNav, setActiveNav] = useState(1);
-    const [chartExample1Data, setChartExample1Data] = useState("data1");
+    const [open, setOpen] = useState(false);
+    const [firstDropdownValue, setFirstDropdownValue] = useState('');
+    const [orderDropdownValue, setOrderDropdownValue] = useState('');
+    const [dateChange, setDateChange] = useState('');
+    const [timeChange, setTimeChange] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleok = () => {
+        setOpen(false);
+    }
+    const handleCancel = () => {
+        setOpen(false);
+    }
+    const handleModalok = () => {
+        setModalOpen(false);
+      }
+      const handleModalCancel = () => {
+        setModalOpen(false);
+      }
     const Option = Select.Option;
 
-    function handleChange(value) {
-        console.log(`selected ${value}`);
-    }
-
-    function handleBlur() {
-        console.log('blur');
-    }
-
-    function handleFocus() {
-        console.log('focus');
-    }
-
-
-    if (window.Chart) {
-        parseOptions(Chart, chartOptions());
-    }
-
-    const toggleNavs = (e, index) => {
-        e.preventDefault();
-        setActiveNav(index);
-        setChartExample1Data("data" + index);
-    };
     return (
         <>
             <Header />
@@ -98,8 +89,10 @@ const ChicagoTreeTown = (props) => {
                                         </div>
 
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                                        {/* <button className="choose mt-2 ">Choose File</button> */}
-                                        <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                                       
+                                        {/* <Upload> */}
+                                        <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
+                                        {/* </Upload> */}
                                     </label>
                                     <label for="images" class="drop-containers p-4" ></label>
                                 </div>
@@ -136,17 +129,21 @@ const ChicagoTreeTown = (props) => {
                                     {/* </form> */}
                                 </div>
                                 <div className="ml-2 mb-5">
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="mb-[2px]">
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Delivery or Pick-Up</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Delivery", value: "a"},
+                                                { label: "Delivery", value: "a" },
                                                 { label: "Pick Up", value: "b" }
                                             ]}
                                         />
                                     </Form>
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="pt-3">
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Bind or No-Bind</label>
                                         <Radio.Group
                                             options={[
                                                 { label: "Bind", value: "a" },
@@ -154,19 +151,71 @@ const ChicagoTreeTown = (props) => {
                                             ]}
                                         />
                                     </Form>
-                                    <Form>
-                                    <label className="labels font12">Notify contact 3</label>
+                                    <Form className="pt-3">
+                                        <label
+                                            style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
+                                            className="labels">Add 11 x 17 record set?</label>
                                         <Radio.Group
                                             options={[
-                                                { label: "Yes", value: "a", },
+                                                { label: "Yes", value: "a" },
                                                 { label: "No", value: "b" }
                                             ]}
                                         />
                                     </Form>
                                 </div>
-                                <button type="submit" className=" button-request">
-                                    Submit Request
-                                </button>
+                                <Button className="mt-5" key="submit" onClick={() => setModalOpen(true)} >Submit Request</Button>
+                                <Modal
+                                    // title="Print"
+                                    centered
+                                    open={open}
+                                    onOk={handleok}
+                                    onCancel={handleCancel}
+                                    closable={false}
+                                    footer={[
+                                        <Row className="p-3">
+                                            <Col className="ml-2" style={{ textAlign: 'start' }}>
+                                                <button className="button-request padding" onClick={handleCancel}>Go Back</button>
+                                            </Col>
+                                            <Col>
+                                                <Button key="submit" onClick={handleok}>Submit Request</Button>
+                                            </Col>
+                                        </Row>,
+
+                                    ]}
+
+                                    width={1300}
+                                >
+
+                                    <ChicagoModal />
+
+                                </Modal>
+                                <Modal
+                  // title="Print"
+                  centered
+                  open={modalOpen}
+                  onOk={handleModalok}
+                  onCancel={handleModalCancel}
+                  closable={false}
+                  footer={[
+                    <Row className="p-4 " >
+                    <div className="ml-2 col-3" >
+                      <button style={{ textAlign:"center", height:"43px", width: "152px", BorderRadius:"8px", padding:"12px, 16px, 12px, 16px",
+                       gap:"8px", background:"#FFFFFF",border:" 1px solid #EDEDED"}} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
+                    </div>
+
+                    <div className="col-8 ml-3">
+                      <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
+                    </div>  
+                  </Row>
+                  ]}
+                  width={"375px"}   
+                  
+
+                >
+                  <DetectedPopUp/>
+              
+
+                  </Modal> 
                             </CardBody>
                         </Card>
                     </Col>
@@ -185,56 +234,89 @@ const ChicagoTreeTown = (props) => {
                                 <form className="p-2">
 
                                     <label className="labels">Project Number</label>
+
                                     <Select
                                         showSearch
                                         size={"large"}
                                         style={{ width: '100%' }}
                                         placeholder="Type to Search..."
-                                    > </Select>
-                                    {/* <div className="radio-btn-container" style={{ display: "flex" }}>
-                                        <RadioButton
-                                            // changed={radioChangeHandler}
-                                            // id="1"
-                                            // isSelected={paymentMethod === "QuickPay"}
-                                            // label="QuickPay"
-                                            // value="QuickPay"
-                                        />
-                                        </div> */}
-                                    {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
+                                        optionFilterProp="children"
+                                        onChange={(e) => setFirstDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                                    {firstDropdownValue ?
+                                        <TextArea className="mt-3" style={{ height: '200px' }}
+                                            placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                                        >
+                                        </TextArea> : ''
+                                    }
 
                                     <label for="start" className="labels pt-3">Date/Time Required</label>
                                     <div className="pb-3">
-                                        {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                                         <DatePicker
                                             name={""}
                                             className="inputs"
                                             suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                                             placeholder="Select..."
                                             hideTime
+                                            onChange={(e) => {
+                                                let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatDate ? setDateChange(formatDate) : setDateChange('')
+                                            }}
                                             format="MM/DD/YYYY" />
                                     </div>
                                     <div>
-                                        {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                                         <TimePicker
                                             name={""}
                                             suffixIcon={<Clock style={{ color: "black" }} />}
                                             placeholder="00 : 00 PM"
                                             hideSeconds
                                             format="HH:mm A"
+                                            // value={timeChange}
                                             showTime={{ format: 'HH:mm A', use12Hours: true }}
+                                            onChange={(e) => {
+                                                let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                                                formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                                            }}
                                         />
+                                        {
+                                            dateChange == "Invalid date" && timeChange == "Invalid date" ? ""
+                                                :
+                                                dateChange && timeChange ?
+                                                    <TextArea className="mt-3" style={{ height: '200px' }}
+                                                        placeholder='Please list the reason for the chosen earlier due time.'
+                                                    >
+                                                    </TextArea> : ''
+                                        }
+
                                     </div>
                                     <label className="labels pt-3">Order For</label>
                                     <Select
                                         size={"large"}
                                         style={{ width: '100%' }}
                                         showSearch
+                                        optionFilterProp="children"
                                         placeholder="Type to Search..."
-                                    > </Select>
+                                        onChange={(e) => setOrderDropdownValue(e)}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option value="1">One</Option>
+                                        <Option value="2">Two</Option>
+                                        <Option value="3">Three</Option>
+                                    </Select>
+                                    {
+                                        orderDropdownValue ?
+                                            <TextArea className="mt-3" style={{ height: '200px' }}
+                                                placeholder='Please list the reason.'
+                                            >
+                                            </TextArea> : ''
+                                    }
+
                                 </form>
                                 <label for="images" class="drop-containers p-4" ></label>
                             </CardBody>
@@ -246,5 +328,4 @@ const ChicagoTreeTown = (props) => {
         </>
     );
 };
-
 export default ChicagoTreeTown;

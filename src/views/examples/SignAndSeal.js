@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import {  Select, Card, Input, Checkbox } from "antd";
-import { Container} from "reactstrap";
+import {  Select, Card, Input, Checkbox,Form,Radio } from "antd";
+import { Container, Row,Col} from "reactstrap";
 import TextArea from "antd/es/input/TextArea";
 import { Trash } from "iconsax-react";
 
-const AllRequestsModal = (props) => {
+const SignAndSeal = (props) => {
    const [color, setColor] = useState(false);
 
     return(
@@ -351,10 +351,52 @@ const AllRequestsModal = (props) => {
                 <Card.Grid hoverable={false} style={{borderRadius:'0px 0px 8px 0px',width:'3.8%'}} className="gridCard p-3">
                    <div className="text-center pt-3"><Trash style={{color:'#A0A0A0'}}/></div> 
                 </Card.Grid>
+                
             </Card> 
+            <Form className="pt-3 p-4">
+                                    <label 
+                                    style={{color: '#7E7E7E', fontSize:'12px', fontFamily:'Manrope'}}
+                                    className="labels">Sign and Seal Required?</label>
+                                        <Radio.Group
+                                            options={[
+                                                { label: "Yes", value: "a"},
+                                                { label: "No", value: "b" }
+                                            ]}
+                                        />
+                                    </Form>
+                                    <Row className="p-4">
+                  <Col>
+                    <label className="labels">State</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">Discipline</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">QA/QC</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                </Row>
          </Container>
          <hr className="m-0 mt-4"/>
         </>
     )
 }
-export default AllRequestsModal;
+export default SignAndSeal;

@@ -48,11 +48,11 @@
     }
 
     .navbar-nav {
-      .nav-item {
-        .media:not(:last-child){
-          margin-bottom: 1.5rem;
+        .nav-item {
+            .media:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
         }
-      }
     }
 
     @include media-breakpoint-up(lg) {
@@ -70,6 +70,7 @@
                     }
                 }
             }
+
             .nav-link {
                 padding-top: $navbar-nav-link-padding-y;
                 padding-bottom: $navbar-nav-link-padding-y;
@@ -133,8 +134,8 @@
                     }
                 }
 
-                .show > .nav-link,
-                .active > .nav-link,
+                .show>.nav-link,
+                .active>.nav-link,
                 .nav-link.show,
                 .nav-link.active {
                     color: #FFFFFF;
@@ -152,7 +153,7 @@
     }
 }
 
-.logoicon{
+.logoicon {
     background: #93CAE6;
     border-radius: 100px;
     width: 120px;
@@ -160,7 +161,15 @@
     padding: 30px;
 
 }
-.navbarName{
+.msgicon{
+    background: #93CAE6;
+    border-radius: 90px;
+    width: 120px;
+    height: 120px;
+    padding: 30px;
+}
+
+.navbarName {
     font-family: 'Manrope', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -168,11 +177,13 @@
     line-height: 19px;
     color: #000000 !important;
 }
-.navbarName.active{
+
+.navbarName.active {
     color: #FFFFFF !important;
     background-color: #000000 !important;
 }
-.head{
+
+.head {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 500;
@@ -180,7 +191,8 @@
     line-height: 27px;
     color: #7E7E7E;
 }
-.ant-checkbox-inner:after{
+
+.ant-checkbox-inner:after {
     inset-inline-start: 21.5% !important;
     border: 2px solid #000000 !important;
     border-top: 0 !important;
@@ -188,3 +200,60 @@
     height: 12.142857142857142px !important;
 
 }
+
+.attentionInfoIcon {
+    padding: 12px;
+    gap: 10px;
+    width: 48px;
+    height: 48px;
+    background: #93CAE6;
+    border-radius: 32px;
+}
+
+.borderBox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+    width: 795px;
+    height: 135px;
+    background: rgba(38, 75, 93, 0.2);
+    border: 1px solid #264B5D;
+    border-radius: 8px;
+}
+
+.boxFirstRowtext {
+    // width: 712px;
+    // height: 56px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 200%;
+    color: #000000;
+}
+
+.boxSecondRowtext{
+// width: 712px;
+// height: 19px;
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+color: #000000;
+}
+.popupIcon{
+padding: 24px;
+// gap: 10px;
+align-items: center;
+width: 96px;
+height: 96px;
+background: #93CAE6;
+border-radius: 64px;
+}
+
+
+
+

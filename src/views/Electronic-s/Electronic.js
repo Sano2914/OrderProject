@@ -27,9 +27,13 @@ import {
 
 import { Notepad2, Clock, CalendarCircle } from "iconsax-react";
 import Header from "components/Headers/Header.js";
+import TextArea from "antd/es/input/TextArea";
+import { Option } from "antd/es/mentions";
+import moment from "moment";
 
 
 const data = [];
+
 for (let i = 0; i < 6; i++) {
   data.push({
     key: i,
@@ -83,11 +87,7 @@ const columns = [
             showSearch
             size={"medium"}
             style={{ width: "100%" }}
-
-
-
             placeholder="Type to Search..."
-
           > </Select>
         </div>
       );
@@ -98,6 +98,11 @@ const columns = [
 
 const Electronic = (props) => {
   const [value, setValue] = useState(1);
+  const [borderBoxOpen, setBorderBoxOpen] = useState(false);
+  const [firstDropdownValue, setFirstDropdownValue] = useState('');
+  const [orderDropdownValue, setOrderDropdownValue] = useState('');
+  const [dateChange, setDateChange] = useState('');
+  const [timeChange, setTimeChange] = useState('');
 
   const onChange = (e) => {
     console.log('radio checked', e.target.value);
@@ -137,10 +142,7 @@ const Electronic = (props) => {
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
-
-
                     placeholder="Type to Search..."
-
                   > </Select>
                 </Row>
                 <Row className="mt-3">
@@ -155,12 +157,9 @@ const Electronic = (props) => {
                       {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
                       <div className="note p-4">
                         <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
-
                       </div>
-
                       <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                      {/* <button className="choose mt-2 ">Choose File</button> */}
-                      <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload>
+                      <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
                     </label>
 
                   </div>
@@ -183,10 +182,7 @@ const Electronic = (props) => {
                       showSearch
                       size={"large"}
                       style={{ width: '100%' }}
-
-
                       placeholder="Type to Search..."
-
                     > </Select>
                   </Col>
                   <Col>
@@ -195,8 +191,6 @@ const Electronic = (props) => {
                       showSearch
                       size={"large"}
                       style={{ width: '100%' }}
-
-
                       placeholder="Type to Search..."
 
                     > </Select>
@@ -207,23 +201,12 @@ const Electronic = (props) => {
                       showSearch
                       size={"large"}
                       style={{ width: '100%' }}
-
-
                       placeholder="Type to Search..."
-
                     > </Select>
                   </Col>
-
                 </Row>
-
-                <button type="submit" className=" button-request mt-4">
-                  Submit Request
-                </button>
-
+                <Button className="mt-5" key="submit">Submit Request</Button>
               </CardBody>
-
-
-
             </Card>
           </Col>
           <Col xl="4">
@@ -241,54 +224,88 @@ const Electronic = (props) => {
                 <form className="p-2">
 
                   <label className="labels">Project Number</label>
+
                   <Select
                     showSearch
                     size={"large"}
                     style={{ width: '100%' }}
-
-
                     placeholder="Type to Search..."
-
-                  > </Select>
-
-                  {/* <select
-                  className="inputs"
-                  placeholder="Type to Search...">
-                    <option value =""></option>
-                </select> */}
+                    optionFilterProp="children"
+                    onChange={(e) => setFirstDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {/* {console.log("firstDroroDownValue", firstDropdownValue)} */}
+                  {firstDropdownValue ?
+                    <TextArea className="mt-3" style={{ height: '200px' }}
+                      placeholder='Please list the reason why you are selecting an overhead project and/or list the dormant project or client where this order should be billed.'
+                    >
+                    </TextArea> : ''
+                  }
 
                   <label for="start" className="labels pt-3">Date/Time Required</label>
                   <div className="pb-3">
-                    {/* <Input suffix={<CalendarCircle />} className="inputs" defaultValue="Select..." placeholder="Select" type="inputs" /> */}
                     <DatePicker
                       name={""}
                       className="inputs"
                       suffixIcon={<CalendarCircle style={{ color: "black" }} />}
                       placeholder="Select..."
                       hideTime
+                      onChange={(e) => {
+                        let formatDate = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatDate ? setDateChange(formatDate) : setDateChange('')
+                      }}
                       format="MM/DD/YYYY" />
                   </div>
                   <div>
-                    {/* <Input suffix={<Clock />} className="inputs" defaultValue="00 : 00 PM" type="inputs" /> */}
                     <TimePicker
                       name={""}
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
                       format="HH:mm A"
+                      // value={timeChange}
                       showTime={{ format: 'HH:mm A', use12Hours: true }}
+                      onChange={(e) => {
+                        let formatTime = moment(e).format("MM-DD-YYYY HH:mm:ss a")
+                        formatTime ? setTimeChange(formatTime) : setTimeChange('')
+                      }}
                     />
+                    {
+                      dateChange == "Invalid date" && timeChange == "Invalid date" ? ""
+                        :
+                        dateChange && timeChange ?
+                          <TextArea className="mt-3" style={{ height: '200px' }}
+                            placeholder='Please list the reason for the chosen earlier due time.'
+                          >
+                          </TextArea> : ''
+                    }
+
                   </div>
                   <label className="labels pt-3">Order For</label>
                   <Select
                     size={"large"}
                     style={{ width: '100%' }}
                     showSearch
+                    optionFilterProp="children"
                     placeholder="Type to Search..."
-
-                  > </Select>
-
-
+                    onChange={(e) => setOrderDropdownValue(e)}
+                  >
+                    <Option value="">Select</Option>
+                    <Option value="1">One</Option>
+                    <Option value="2">Two</Option>
+                    <Option value="3">Three</Option>
+                  </Select>
+                  {
+                    orderDropdownValue ?
+                      <TextArea className="mt-3" style={{ height: '200px' }}
+                        placeholder='Please list the reason.'
+                      >
+                      </TextArea> : ''
+                  }
 
                 </form>
                 <label for="images" class="drop-containers p-4" ></label>
@@ -303,4 +320,3 @@ const Electronic = (props) => {
 };
 
 export default Electronic;
-

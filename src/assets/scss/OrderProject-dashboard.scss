@@ -2,9 +2,9 @@
 
 // Core
 
-@import "argon-dashboard/custom/functions";
-@import "argon-dashboard/custom/variables";
-@import "argon-dashboard/custom/mixins";
+@import "OrderProject-dashboard/custom/functions";
+@import "OrderProject-dashboard/custom/variables";
+@import "OrderProject-dashboard/custom/mixins";
 
 // bootstrap (4.6.0) components
 
@@ -41,26 +41,26 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
-// Argon utilities and components
+// OrderProject utilities and components
 
-@import "argon-dashboard/custom/reboot";
-@import "argon-dashboard/custom/utilities";
-@import "argon-dashboard/custom/components";
+@import "OrderProject-dashboard/custom/reboot";
+@import "OrderProject-dashboard/custom/utilities";
+@import "OrderProject-dashboard/custom/components";
 
 // Vendor (Plugins)
 
-@import "argon-dashboard/custom/vendors";
+@import "OrderProject-dashboard/custom/vendors";
 
 // Docs components
 
-@import "argon-dashboard/docs/variables";
-@import "argon-dashboard/docs/nav";
-@import "argon-dashboard/docs/clipboard-js";
-@import "argon-dashboard/docs/component-examples";
-@import "argon-dashboard/docs/prism";
-@import "argon-dashboard/docs/content";
-@import "argon-dashboard/docs/sidebar";
-@import "argon-dashboard/docs/footer";
+@import "OrderProject-dashboard/docs/variables";
+@import "OrderProject-dashboard/docs/nav";
+@import "OrderProject-dashboard/docs/clipboard-js";
+@import "OrderProject-dashboard/docs/component-examples";
+@import "OrderProject-dashboard/docs/prism";
+@import "OrderProject-dashboard/docs/content";
+@import "OrderProject-dashboard/docs/sidebar";
+@import "OrderProject-dashboard/docs/footer";
 
 // React Differences
 @import "react/react-differences";
