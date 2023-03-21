@@ -55,6 +55,7 @@ const Sidebar = (props) => {
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
       return (
+        prop.menuList ? 
         <NavItem className="pb-3" key={key}>
           <NavLink 
             className="navbarName"
@@ -67,7 +68,7 @@ const Sidebar = (props) => {
             <span className="pr-2">{prop.icon}</span>
             {prop.name}
           </NavLink>
-        </NavItem>
+        </NavItem> : ''
       );
     });
   };
