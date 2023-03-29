@@ -107,15 +107,15 @@ const Index = (props) => {
                     Sign & Seal
                   </h6>
                 </div>
-
-                <Row className="align-items-center pt-3">
-                  <Col lg="5">
+<div className="drop-container-sign mt-3">
+<Row className=" align-items-center pt-3  p-2 ">
+                  <Col lg="5" className="">
                     <Row>
                       <Col lg="2" className="pr-0">
                         <Checkbox
                           className=""
                           onClick={() => {
-                            setOpen1(true);
+                            // setOpen1(true);
                             setBorderBoxOpen(!borderBoxOpen);
                           }}
                         ></Checkbox>
@@ -133,6 +133,8 @@ const Index = (props) => {
                     documents printed
                   </Col>
                 </Row>
+</div>
+               
                 <div className="header-2 ls-1 mt-3">Print</div>
                 <div className="mt-2">
                   <label for="images" class="drop-container p-4">
