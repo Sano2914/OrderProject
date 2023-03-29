@@ -13,6 +13,7 @@ import routes from "routes.js";
 const Admin = (props) => {
   const mainContent = React.useRef(null);
   const location = useLocation();
+  const url = location.pathname;
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -50,6 +51,8 @@ const Admin = (props) => {
 
   return (
     <>
+    {
+      url === '/client/email' ? " " : 
       <Sidebar
         {...props}
         routes={routes}
@@ -59,17 +62,22 @@ const Admin = (props) => {
           imgAlt: "..."
         }} 
       />
+    }
       <div className="main-content" ref={mainContent}>
+      {
+        url === '/client/email' ? '' : 
         <ClientNavbar
           {...props}
           brandText={getBrandText(props.location.pathname)}
         />
+      }
         <Switch>
           {getRoutes(routes)}
           <Redirect from="*" to="/client/index" />
         </Switch>
         <Container fluid>
           <ClientFooter />
+
         </Container>
       </div>
     </>
