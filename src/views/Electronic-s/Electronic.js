@@ -116,16 +116,16 @@ const Electronic = (props) => {
         <Row>
           <Col xl="8">
             <Card className="bg-white " >
-              <CardHeader className="bg-transparent">
+              {/* <CardHeader className="bg-transparent"> */}
                 <Row className="align-items-center">
                   <div className="col">
-                    <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
+                    {/* <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                       Request Type
-                    </h6>
+                    </h6> */}
                   </div>
 
                 </Row>
-              </CardHeader>
+              {/* </CardHeader> */}
               <CardBody>
                 <div className='electronic-s'>
                   Electronic S and S Request
@@ -145,14 +145,26 @@ const Electronic = (props) => {
                     placeholder="Type to Search..."
                   > </Select>
                 </Row>
-                <Row className="mt-3">
+                <Row className="mb-2">
                   <Table columns={columns} dataSource={data} pagination={false} />
                 </Row>
-                <div className="">
+
+                <Row className=" p-3 ">
+                  <div className="electronic-2">
+                    Are bookmarks required for this submittal?
+                  </div>
+                </Row>
+
+                <Radio.Group onChange={onChange} value={value}>
+                  <Radio value={1}>Yes</Radio>
+                  <Radio value={2}>No</Radio>
+                </Radio.Group>
+
+                <div className="mt-4">
                   <div className='header-2 ls-1 mt-3'>
                     Electronic S and S
                   </div>
-                  <div className='mt-2'>
+                  <div className='mt-3'>
                     <label for="images" class="drop-container p-4">
                       {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
                       <div className="note p-4">
@@ -164,18 +176,8 @@ const Electronic = (props) => {
 
                   </div>
                 </div>
-                <Row className=" p-3">
-                  <div className="" style={{ color: "7E7E7E", fontSize: "12px" }}>
-                    Are bookmarks required for this submittal?
-                  </div>
-                </Row>
 
-                <Radio.Group onChange={onChange} value={value}>
-                  <Radio value={1}>Yes</Radio>
-                  <Radio value={2}>No</Radio>
-                </Radio.Group>
-
-                <Row className="mt-3">
+                <Row className="mt-4">
                   <Col>
                     <label className="labels">Notify Contact 1</label>
                     <Select
@@ -266,6 +268,8 @@ const Electronic = (props) => {
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
+                      showNow={false}
+                      minuteStep={15}
                       format="HH:mm A"
                       // value={timeChange}
                       showTime={{ format: 'HH:mm A', use12Hours: true }}

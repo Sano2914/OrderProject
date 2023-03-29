@@ -60,15 +60,15 @@ const ScanIndex = (props) => {
         <Row>
           <Col xl="8">
             <Card className="bg-white " >
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
+              {/* <CardHeader className="bg-transparent"> */}
+              <Row className="align-items-center">
+                <div className="col">
+                  {/* <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                       Request Type
-                    </h6>
-                  </div>
-                </Row>
-              </CardHeader>
+                    </h6> */}
+                </div>
+              </Row>
+              {/* </CardHeader> */}
               <CardBody>
                 <div className="" >
                   <h1 style={{ fontSize: 24, color: '#000000', fontWeight: 500, fontFamily: 'Manrope' }}>
@@ -78,11 +78,11 @@ const ScanIndex = (props) => {
                     Select this option if you have physical documents that you need scanned to a digital format.
                   </span>
                 </div>
-                <div className="mt-3" style={{ fontSize: 12, color: '#000000' }}>
+                <div className="mt-4" style={{ fontSize: 12, color: '#000000' }}>
                   Name your file
                 </div>
                 {/* <Row className="align-items-center pt-3"> */}
-                <Row className="mt-2">
+                <Row className="mt-3">
                   <Col className=' header-3 font12'>
                     <Input
                       type="text"
@@ -91,14 +91,14 @@ const ScanIndex = (props) => {
                       placeholder="FileName.pdf"
                     />
                   </Col>
-                  <Col className="pr-0" style={{ textAlign: 'end' }}>
-                    <Checkbox className="">Color</Checkbox>
+                  <Col className="pr-4" style={{ textAlign: 'end' }}>
+                    <Checkbox className="">Scan In Color</Checkbox>
                   </Col>
                 </Row>
-                <div className='font14  pl-2 mt-4'>Where should we put your file?</div>
+                <div className='font14  mt-4'>Where should we put your file?</div>
                 {/* </Row> */}
 
-                <div className='mt-2'>
+                <div className='mt-3'>
                   <Card style={{ height: 300 }}>
                     <div className="p-3 putOnFile">
                       Example P:\Client\2016.000 - City, St\4 Support Documents\3 in House Documents
@@ -115,6 +115,7 @@ const ScanIndex = (props) => {
                   {/* <Upload><Button className="pl-3 pr-3">Choose File</Button></Upload> */}
                   <label for="images" class="drop-containers p-4" ></label>
                 </div>
+
                 <Button className="mt-5" key="submit" onClick={() => setPopUp2(true)}>Submit Request</Button>
               </CardBody>
             </Card>
@@ -202,6 +203,8 @@ const ScanIndex = (props) => {
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
+                      showNow={false}
+                      minuteStep={15}
                       format="HH:mm A"
                       // value={timeChange}
                       showTime={{ format: 'HH:mm A', use12Hours: true }}
@@ -244,6 +247,36 @@ const ScanIndex = (props) => {
                   }
 
                 </form>
+                <Row className="mt-3">
+                  <Col>
+                    <label className="labels ">Notify Contact 1</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">Notify Contact 2</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">Notify Contact 3</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                </Row>
                 <label for="images" class="drop-containers p-4" ></label>
               </CardBody>
             </Card>
