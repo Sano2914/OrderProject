@@ -80,53 +80,27 @@ const Index = (props) => {
   const handlePopUpCancel = () => {
     setPopUp(false);
   };
- 
+
   return (
     <>
       <Header />
       {/* Page content */}
-
       <Container fluid className="pl-4 ml-3">
-        {borderBoxOpen ? (
-          <Card className=" borderBox mb-5 ml-10">
-            <div className="d-flex">
-              <div>
-                {" "}
-                <InfoCircle
-                  className="attentionInfoIcon mr-5"
-                  style={{ color: "#264B5D" }}
-                />
-              </div>
-              <div>
-                <div className="boxFirstRowtext">
-                  It is past 2 PM EST deadline for new orders. Depending on the
-                  time and workload, this order may not be completed by the end
-                  of the day.
-                </div>
-                <div className="boxSecondRowtext pt-2 ">
-                  For more information, please call the plotroom.
-                </div>
-              </div>
-            </div>
-          </Card>
-        ) : (
-          ""
-        )}
         <Row>
           <Col xl="8">
             <Card className="bg-white ">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6
+              {/* <CardHeader className="bg-transparent"> */}
+              <Row className="align-items-center">
+                <div className="col">
+                  {/* <h6
                       className=" header-white ls-1 mb-1"
                       style={{ color: "#7E7E7E" }}
                     >
                       Request Type
-                    </h6>
-                  </div>
-                </Row>
-              </CardHeader>
+                    </h6> */}
+                </div>
+              </Row>
+              {/* </CardHeader> */}
               <CardBody>
                 <div className="">
                   <h6 className=" text-black font12 text-left ls-1 mb-1">
@@ -187,6 +161,7 @@ const Index = (props) => {
                   </label>
                   <label for="images" class="drop-containers p-4"></label>
                 </div>
+
                 <Button type="submit" onClick={() => setPopUp(true)}>
                   Submit Request
                 </Button>
@@ -277,8 +252,8 @@ const Index = (props) => {
                   ]}
                   //  height ={"437px"}
                   width={"375px"}
-                  // left= {"528px"}
-                  // top= {"291px"}
+                // left= {"528px"}
+                // top= {"291px"}
                 >
                   <ReceivedSuccessfullyPopUp />
                 </Modal>
@@ -350,12 +325,14 @@ const Index = (props) => {
                       suffixIcon={<Clock style={{ color: "black" }} />}
                       placeholder="00 : 00 PM"
                       hideSeconds
+                      showNow={false}
+                      minuteStep={15}
                       format="HH:mm A"
                       // value={timeChange}
                       showTime={{ format: "HH:mm A", use12Hours: true }}
                       onChange={(e) => {
                         let formatTime = moment(e).format(
-                          "MM-DD-YYYY HH:mm:ss a"
+                          "MM-DD-YYYY HH:mm a"
                         );
                         formatTime
                           ? setTimeChange(formatTime)
@@ -372,6 +349,32 @@ const Index = (props) => {
                       ""
                     )}
                   </div>
+
+                  {borderBoxOpen ? (
+                    <Card className=" borderBox mt-2  ">
+                      <div className="d-flex">
+                        <div>
+                          {" "}
+                          <InfoCircle
+                            className="attentionInfoIcon mr-4"
+                            style={{ color: "#264B5D" }}
+                          />
+                        </div>
+                        <div>
+                          <div className="">
+                            It is past 2 PM EST deadline for new orders. Depending on the
+                            time and workload, this order may not be completed by the end
+                            of the day.
+                          </div>
+                          <div className="pt-2 ">
+                            For more information, please call the plotroom.
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  ) : (
+                    ""
+                  )}
                   <label className="labels pt-3">Order For</label>
                   <Select
                     size={"large"}
@@ -396,12 +399,43 @@ const Index = (props) => {
                     ""
                   )}
                 </form>
-                <label for="images" class="drop-containers p-4">
+
+                <Row className="mt-3">
+                  <Col>
+                    <label className="labels ">Notify Contact 1</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">Notify Contact 2</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+
+                    > </Select>
+                  </Col>
+                  <Col>
+                    <label className="labels">Notify Contact 3</label>
+                    <Select
+                      showSearch
+                      size={"large"}
+                      style={{ width: '100%' }}
+                      placeholder="Type to Search..."
+                    > </Select>
+                  </Col>
+                </Row>
+
+                {/* <label for="images" class="drop-containers p-4">
                  <a href="/client/email">Sample email</a> 
                  <a href="/client/s&s">S & S</a>
                  <a href="/client/orderpdf">Order PDF</a>  
-
-                </label>
+                </label> */}
               </CardBody>
             </Card>
           </Col>

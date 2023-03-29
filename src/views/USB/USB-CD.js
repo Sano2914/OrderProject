@@ -42,7 +42,7 @@ const USBCD = (props) => {
     const handlePopUp1Cancel = () => {
         setPopUp1(false);
     }
- 
+
     return (
         <>
             <Header />
@@ -51,16 +51,16 @@ const USBCD = (props) => {
                 <Row>
                     <Col xl="8">
                         <Card className="bg-white " >
-                            <CardHeader className="bg-transparent">
-                                <Row className="align-items-center">
-                                    <div className="col">
-                                        <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
+                            {/* <CardHeader className="bg-transparent"> */}
+                            <Row className="align-items-center">
+                                <div className="col">
+                                    {/* <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                                             Request Type
-                                        </h6>
-                                    </div>
+                                        </h6> */}
+                                </div>
 
-                                </Row>
-                            </CardHeader>
+                            </Row>
+                            {/* </CardHeader> */}
                             <CardBody>
                                 <div className="px-0" >
                                     <h1 style={{ fontSize: 24, color: '#000000', fontWeight: 500, fontFamily: 'Manrope' }}>
@@ -115,12 +115,13 @@ const USBCD = (props) => {
                                         </div>
 
                                         <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                                        
+
                                         <Upload><button className="pl-3 pr-3 button-request">Choose File</button></Upload>
                                     </label>
                                     <label for="images" class="drop-containers p-4" >
                                     </label>
                                 </div>
+
                                 <Button className="mt-5" key="submit" onClick={() => setPopUp1(true)}>Submit Request</Button>
                             </CardBody>
                         </Card>
@@ -205,6 +206,8 @@ const USBCD = (props) => {
                                             suffixIcon={<Clock style={{ color: "black" }} />}
                                             placeholder="00 : 00 PM"
                                             hideSeconds
+                                            showNow={false}
+                                            minuteStep={15}
                                             format="HH:mm A"
                                             // value={timeChange}
                                             showTime={{ format: 'HH:mm A', use12Hours: true }}
@@ -245,6 +248,37 @@ const USBCD = (props) => {
                                             >
                                             </TextArea> : ''
                                     }
+
+                                    <Row className="mt-3">
+                                        <Col>
+                                            <label className="labels pt-3">Notify Contact 1</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+                                            > </Select>
+                                        </Col>
+                                        <Col>
+                                            <label className="labels">Notify Contact 2</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+
+                                            > </Select>
+                                        </Col>
+                                        <Col>
+                                            <label className="labels">Notify Contact 3</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+                                            > </Select>
+                                        </Col>
+                                    </Row>
 
                                 </form>
                                 <label for="images" class="drop-containers p-4" ></label>

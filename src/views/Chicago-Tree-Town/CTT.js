@@ -44,10 +44,10 @@ const ChicagoTreeTown = (props) => {
     }
     const handleModalok = () => {
         setModalOpen(false);
-      }
-      const handleModalCancel = () => {
+    }
+    const handleModalCancel = () => {
         setModalOpen(false);
-      }
+    }
     const Option = Select.Option;
 
     return (
@@ -58,77 +58,27 @@ const ChicagoTreeTown = (props) => {
                 <Row>
                     <Col xl="8">
                         <Card className="bg-white " >
-                            <CardHeader className="bg-transparent">
-                                <Row className="align-items-center">
-                                    <div className="col">
-                                        <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
+                            {/* <CardHeader className="bg-transparent"> */}
+                            <Row className="align-items-center">
+                                <div className="col">
+                                    {/* <h6 className=" header-white ls-1 mb-1" style={{ color: "#7E7E7E" }}>
                                             Request Type
-                                        </h6>
-                                    </div>
+                                        </h6> */}
+                                </div>
 
-                                </Row>
-                            </CardHeader>
+                            </Row>
+                            {/* </CardHeader> */}
                             <CardBody>
                                 <div className="px-0" >
                                     <h1 style={{ fontSize: 24, color: '#000000', fontWeight: 500, fontFamily: 'Manrope' }}>
                                         Chicago - Tree Towns Request
                                     </h1>
-                                    <span style={{ fontSize: 12, color: '#7E7E7E' }}>
+                                    <span style={{ fontSize: 12, color: '#7E7E7E', marginBottom: "2" }}>
                                         Chicago employees may select this option to have the plots sent to Tree Towns.
                                     </span>
                                 </div>
-                                <div className='header-2 ls-1 mt-3'>
-                                    Chicago - Tree Towns
-                                </div>
-                                <div className='mt-2'>
-                                    <label for="images" class="drop-container p-4">
-                                        {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
-                                        <div className="note p-4">
-                                            <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
 
-                                        </div>
-
-                                        <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
-                                       
-                                        {/* <Upload> */}
-                                        <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
-                                        {/* </Upload> */}
-                                    </label>
-                                    <label for="images" class="drop-containers p-4" ></label>
-                                </div>
-                                <div className="mb-5 mr-10"
-                                    style={{ display: "flex", flexDirection: 'row' }}>
-                                    <div className="col-4">
-                                        <label className="labels font12">Notify contact 1</label>
-                                        <Select
-                                            showSearch
-                                            size={"large"}
-                                            style={{ width: '100%' }}
-                                            placeholder="Type to search.."
-                                        />
-                                    </div>
-
-                                    <div className="col-4">
-                                        <label className="labels font12">Notify contact 2</label>
-                                        <Select
-                                            showSearch
-                                            size={"large"}
-                                            style={{ width: '100%' }}
-                                            placeholder="Type to search.."
-                                        />
-                                    </div>
-                                    <div className="col-4">
-                                        <label className="labels font12">Notify contact 3</label>
-                                        <Select
-                                            showSearch
-                                            size={"large"}
-                                            style={{ width: '100%' }}
-                                            placeholder="Type to search.."
-                                        />
-                                    </div>
-                                    {/* </form> */}
-                                </div>
-                                <div className="ml-2 mb-5">
+                                <div className="ml-2 mt-4">
                                     <Form className="mb-[2px]">
                                         <label
                                             style={{ color: '#7E7E7E', fontSize: '12px', fontFamily: 'Manrope' }}
@@ -163,6 +113,27 @@ const ChicagoTreeTown = (props) => {
                                         />
                                     </Form>
                                 </div>
+
+                                <div className='header-2 ls-1 mt-4'>
+                                    Chicago - Tree Towns
+                                </div>
+                                <div className='mt-4'>
+                                    <label for="images" class="drop-container p-4">
+                                        {/* <img src={require("../assets/img/theme/upload.png")} alt="" className="h-10 w-10 mt-5" /> */}
+                                        <div className="note p-4">
+                                            <Notepad2 size="40" className="ml-1 mt-1" color="#A0A0A0" />
+
+                                        </div>
+
+                                        <span class="drop-title mt-2">Drag and drop or browse a file from the network to continue.</span>
+
+                                        {/* <Upload> */}
+                                        <button className="pl-3 pr-3 button-request" onClick={() => setOpen(true)}>Choose File</button>
+                                        {/* </Upload> */}
+                                    </label>
+                                    <label for="images" class="drop-containers p-4" ></label>
+                                </div>
+
                                 <Button className="mt-5" key="submit" onClick={() => setModalOpen(true)} >Submit Request</Button>
                                 <Modal
                                     // title="Print"
@@ -190,32 +161,34 @@ const ChicagoTreeTown = (props) => {
 
                                 </Modal>
                                 <Modal
-                  // title="Print"
-                  centered
-                  open={modalOpen}
-                  onOk={handleModalok}
-                  onCancel={handleModalCancel}
-                  closable={false}
-                  footer={[
-                    <Row className="p-4 " >
-                    <div className="ml-2 col-3" >
-                      <button style={{ textAlign:"center", height:"43px", width: "152px", BorderRadius:"8px", padding:"12px, 16px, 12px, 16px",
-                       gap:"8px", background:"#FFFFFF",border:" 1px solid #EDEDED"}} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
-                    </div>
+                                    // title="Print"
+                                    centered
+                                    open={modalOpen}
+                                    onOk={handleModalok}
+                                    onCancel={handleModalCancel}
+                                    closable={false}
+                                    footer={[
+                                        <Row className="p-4 " >
+                                            <div className="ml-2 col-3" >
+                                                <button style={{
+                                                    textAlign: "center", height: "43px", width: "152px", BorderRadius: "8px", padding: "12px, 16px, 12px, 16px",
+                                                    gap: "8px", background: "#FFFFFF", border: " 1px solid #EDEDED"
+                                                }} className="PopUpKeyText" onClick={handleModalCancel}>Stay Here</button>
+                                            </div>
 
-                    <div className="col-8 ml-3">
-                      <Button classname="ml-5px PopUpContinueText" style={{ textAlign:"center", height:"43px", width: "152px"}} key="submit" onClick={handleok}>Continue</Button>
-                    </div>  
-                  </Row>
-                  ]}
-                  width={"375px"}   
-                  
+                                            <div className="col-8 ml-3">
+                                                <Button classname="ml-5px PopUpContinueText" style={{ textAlign: "center", height: "43px", width: "152px" }} key="submit" onClick={handleok}>Continue</Button>
+                                            </div>
+                                        </Row>
+                                    ]}
+                                    width={"375px"}
 
-                >
-                  <DetectedPopUp/>
-              
 
-                  </Modal> 
+                                >
+                                    <DetectedPopUp />
+
+
+                                </Modal>
                             </CardBody>
                         </Card>
                     </Col>
@@ -276,6 +249,8 @@ const ChicagoTreeTown = (props) => {
                                             suffixIcon={<Clock style={{ color: "black" }} />}
                                             placeholder="00 : 00 PM"
                                             hideSeconds
+                                            showNow={false}
+                                            minuteStep={15}
                                             format="HH:mm A"
                                             // value={timeChange}
                                             showTime={{ format: 'HH:mm A', use12Hours: true }}
@@ -316,6 +291,36 @@ const ChicagoTreeTown = (props) => {
                                             >
                                             </TextArea> : ''
                                     }
+                                    <Row className="mt-3">
+                                        <Col>
+                                            <label className="labels pt-3">Notify Contact 1</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+                                            > </Select>
+                                        </Col>
+                                        <Col>
+                                            <label className="labels">Notify Contact 2</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+
+                                            > </Select>
+                                        </Col>
+                                        <Col>
+                                            <label className="labels">Notify Contact 3</label>
+                                            <Select
+                                                showSearch
+                                                size={"large"}
+                                                style={{ width: '100%' }}
+                                                placeholder="Type to Search..."
+                                            > </Select>
+                                        </Col>
+                                    </Row>
 
                                 </form>
                                 <label for="images" class="drop-containers p-4" ></label>
